@@ -481,7 +481,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
       <a href="sitescope.html">SiteScope</a>
       <a href="investors.html">Investors</a>
       <a href="contact.html">Contact</a>
-      <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=jvNY71H0DUmOFBwk-H94GcGmgSDY7oJJlFI6BVMCgaxUMTUzU0ROMzhPQkFXQkxES0VKNEFZTklVQy4u" target="_blank" rel="noopener" class="btn btn-gold nav-cta">Request a sample report</a>
+      <a href="https://sitescope.teaforstreets.app/report.html" target="_blank" rel="noopener" class="btn btn-gold nav-cta">Request a sample report</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">☰</button>
   </div>
@@ -491,7 +491,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
     <a href="investors.html">Investors</a>
     <a href="ped-shed.html">Ped Shed</a>
     <a href="contact.html">Contact</a>
-    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=jvNY71H0DUmOFBwk-H94GcGmgSDY7oJJlFI6BVMCgaxUMTUzU0ROMzhPQkFXQkxES0VKNEFZTklVQy4u" target="_blank" rel="noopener" class="btn btn-gold" style="margin-top:10px;justify-content:center">Request a sample report →</a>
+    <a href="https://sitescope.teaforstreets.app/report.html" target="_blank" rel="noopener" class="btn btn-gold" style="margin-top:10px;justify-content:center">Request a sample report →</a>
   </div>
 </header>
 
@@ -730,8 +730,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
       <p class="lede">Serving hotels across Los Angeles. We'll share a sample SiteScope report so you can see the output before engaging us for ongoing monitoring.</p>
     </div>
     <div class="segrow reveal">
-      <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=jvNY71H0DUmOFBwk-H94GcGmgSDY7oJJlFI6BVMCgaxUMTUzU0ROMzhPQkFXQkxES0VKNEFZTklVQy4u" target="_blank" rel="noopener" class="btn btn-gold">I run a hotel →</a>
-      <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=jvNY71H0DUmOFBwk-H94GcGmgSDY7oJJlFI6BVMCgaxUMTUzU0ROMzhPQkFXQkxES0VKNEFZTklVQy4u" target="_blank" rel="noopener" class="lnk">I manage a portfolio — join the waitlist ›</a>
+      <a href="https://cal.com/safir-tfs" target="_blank" rel="noopener" class="btn btn-gold">I run a hotel →</a>
+      <a href="https://cal.com/safir-tfs" target="_blank" rel="noopener" class="lnk">I manage a portfolio — join the waitlist ›</a>
     </div>
   </div>
 </section>
@@ -856,14 +856,7 @@ const meas=new IntersectionObserver((es)=>{es.forEach(e=>{if(!e.isIntersecting)r
 document.querySelectorAll('.tvl').forEach(el=>meas.observe(el));
 
 // #8 on-page request flow
-const FORM='https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=jvNY71H0DUmOFBwk-H94GcGmgSDY7oJJlFI6BVMCgaxUMTUzU0ROMzhPQkFXQkxES0VKNEFZTklVQy4u';
-const modal=document.getElementById('reqModal');
-function setSeg(s){if(modal)modal.querySelectorAll('.seg-pick button').forEach(b=>b.classList.toggle('sel',b.dataset.seg===s));}
-function openModal(seg){if(!modal)return;if(seg)setSeg(seg);modal.classList.add('open');document.body.style.overflow='hidden';}
-function closeModal(){if(!modal)return;modal.classList.remove('open');document.body.style.overflow='';}
-if(modal){modal.querySelector('.modal-bd').addEventListener('click',closeModal);modal.querySelector('.modal-x').addEventListener('click',closeModal);modal.querySelectorAll('.seg-pick button').forEach(b=>b.addEventListener('click',()=>setSeg(b.dataset.seg)));modal.querySelector('.modal-go').addEventListener('click',()=>{window.open(FORM,'_blank','noopener');closeModal();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});}
-function segFromText(t){t=(t||'').toLowerCase();return t.indexOf('store')>-1?'Store':t.indexOf('portfolio')>-1?'Portfolio':'Hotel';}
-document.querySelectorAll('a[href*="forms.cloud.microsoft"], a.btn-gold[href="#cta"], a.btn-light[href="#cta"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();openModal(segFromText(a.textContent));});});
+const FORM='https://sitescope.teaforstreets.app/report.html"forms.cloud.microsoft"], a.btn-gold[href="#cta"], a.btn-light[href="#cta"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();openModal(segFromText(a.textContent));});});
 
 // #10 capture compare — photo + LiDAR (ported from TFS_Capture_Demo), re-skinned
 (function(){
@@ -960,36 +953,4 @@ if(window.IntersectionObserver){new IntersectionObserver(es=>es.forEach(e=>onVie
       closeB=document.getElementById('chatClose'),body=document.getElementById('chatBody'),quick=document.getElementById('chatQuick'),
       ov=document.getElementById('clarkOverlay'),frame=document.getElementById('clarkFrame');
   if(!launch||!panel)return;
-  var SAMPLE='https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=jvNY71H0DUmOFBwk-H94GcGmgSDY7oJJlFI6BVMCgaxUMTUzU0ROMzhPQkFXQkxES0VKNEFZTklVQy4u';
-  var INTAKE='https://report.teaforstreets.app/';
-  function msg(t,who){var d=document.createElement('div');d.className='tcp-msg '+(who||'bot');d.innerHTML=t;body.appendChild(d);body.scrollTop=body.scrollHeight;}
-  function clearQuick(){quick.innerHTML='';}
-  function btn(label,fn){var b=document.createElement('button');b.type='button';b.textContent=label;b.addEventListener('click',fn);quick.appendChild(b);}
-  function link(label,href){var a=document.createElement('a');a.className='cbtn';a.href=href;a.target='_blank';a.rel='noopener';a.textContent=label;quick.appendChild(a);}
-  var started=false;
-  function start(){started=true;body.innerHTML='';clearQuick();
-    msg('Hi, I’m <b>Clark</b> — Clark the Cup. ☕ What brings you by?');
-    btn('Report a street issue',resident);
-    btn('I run a hotel or portfolio',operator);
-  }
-  function resident(){msg('Report a street issue','user');clearQuick();
-    msg('Wonderful — tell me what’s broken on your block and I’ll file it with the city, track it, and write back when it’s fixed.');
-    setTimeout(openOverlay,260);
-    setTimeout(function(){clearQuick();btn('Open it again',openOverlay);btn('Start over',start);},900);
-  }
-  function operator(){msg('I run a hotel or portfolio','user');clearQuick();
-    msg('Great — we survey the quarter-mile around your property, file every 311, and track each one to closure. Want to see a sample report?');
-    link('Request a sample report →',SAMPLE);btn('Start over',start);
-  }
-  function openOverlay(){if(!frame.src)frame.src=INTAKE;ov.hidden=false;document.body.style.overflow='hidden';}
-  function closeOverlay(){ov.hidden=true;document.body.style.overflow='';}
-  ov.addEventListener('click',function(e){if(e.target.hasAttribute('data-close'))closeOverlay();});
-  function openChat(){panel.hidden=false;launch.setAttribute('aria-expanded','true');if(!started)start();}
-  function closeChat(){panel.hidden=true;launch.setAttribute('aria-expanded','false');}
-  launch.addEventListener('click',function(){panel.hidden?openChat():closeChat();});
-  closeB.addEventListener('click',closeChat);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(!ov.hidden)closeOverlay();else if(!panel.hidden)closeChat();}});
-})();
-</script>
-</body>
-</html>
+  var SAMPLE='https://sitescope.teaforstreets.app/report.html
