@@ -500,8 +500,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
   <canvas class="bg" id="heroCanvas" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="reveal"><div class="eyebrow">Infrastructure Intelligence</div></div>
-    <h1 class="reveal">One vision platform for the physical world.</h1>
-    <p class="lede reveal">We survey the block around your property, measure every condition, and track each fix to closure — across streets and properties.</p>
+    <h1 class="reveal">Every great city deserves great streets.</h1>
+    <p class="lede reveal">Cities feel rougher than they used to — and visitors notice. Tea For Streets finds what’s broken on the street, gets it fixed, and tracks every fix to closure — starting at the block around your property, building toward the whole city.</p>
     <div class="cua reveal">Capture <i>·</i> Understand <i>·</i> Act</div>
     <div class="hero-ctas reveal">
       <a href="#cta" class="btn btn-gold">Request a sample report →</a>
@@ -791,11 +791,11 @@ document.querySelectorAll('.ss-prow').forEach(el=>sbio.observe(el));
 const P={
   site:{tag:'<span class="livedot"></span>Live',col:'var(--green)',env:'Outside the property',name:'SiteScope',desc:'For hotels & hospitality. We survey the quarter-mile around the property and track each fix to closure.',vert:'Hotels & hospitality',out:'Filed & closed',sigs:[],cta:'See a sample SiteScope report ›',img:'prod_sitescope_wide.jpg'},
   street:{tag:'<span class="livedot"></span>Live',col:'var(--green)',env:'Anyone, anywhere',name:'StreetScope',desc:'Our public app. Snap a street issue — pothole, graffiti, trash — tag it, and submit. Earn street cred for every report. Free on the App Store.',vert:'Public / residents',out:'Reported to the city',sigs:[],cta:'View StreetScope on the App Store ›',img:'prod_streetscope_wide.jpg'},
-  asset:{tag:'Coming soon',col:'#d64545',env:'The next lens',name:'AssetScope',desc:'The vision engine, aimed somewhere new — we are not saying where yet.',vert:'—',out:'—',sigs:[],cta:'',img:'prod_assetscope_wide.jpg'}
+  asset:{tag:'Coming soon',col:'var(--s-amber)',env:'The next lens',name:'AssetScope',desc:'The vision engine, aimed somewhere new — we are not saying where yet.',vert:'—',out:'—',sigs:[],cta:'',img:'prod_assetscope_wide.jpg'}
 };
 const $=id=>document.getElementById(id);
 const ICO={Trash:'icon_trash.svg',Graffiti:'icon_graffiti.svg',USL:'icon_usl.svg',Potholes:'icon_pothole.svg'};
-function setP(k){const p=P[k];$('p_tag').innerHTML=p.tag;$('p_tag').style.color=p.col;var _soon=p.tag.indexOf('Coming soon')>=0;$('p_tag').style.borderColor=_soon?p.col:'var(--line)';$('p_tag').style.background=_soon?'rgba(214,69,69,.08)':'transparent';$('p_env').textContent=p.env;$('p_name').textContent=p.name;$('p_desc').textContent=p.desc;$('p_vert').textContent=p.vert;$('p_out').textContent=p.out;$('p_cta').textContent=p.cta;$('p_vlabel').textContent=p.name;$('p_sigs').innerHTML=p.sigs.map(s=>{const ic=ICO[s]?'<span class="sig-ic" style="--m:url('+__A['tfs_mock_assets/'+ICO[s]]+')"></span>':'';return '<span class="sig">'+ic+s+'</span>';}).join('');const im=$('p_img');im.style.opacity=0;setTimeout(()=>{im.src=__A['tfs_mock_assets/'+p.img];im.style.transition='opacity .4s';im.style.opacity=1;},180);}
+function setP(k){const p=P[k];$('p_tag').innerHTML=p.tag;$('p_tag').style.color=p.col;var _soon=p.tag.indexOf('Coming soon')>=0;$('p_tag').style.borderColor=_soon?p.col:'var(--line)';$('p_tag').style.background=_soon?'rgba(226,163,59,.14)':'transparent';$('p_env').textContent=p.env;$('p_name').textContent=p.name;$('p_desc').textContent=p.desc;$('p_vert').textContent=p.vert;$('p_out').textContent=p.out;$('p_cta').textContent=p.cta;$('p_vlabel').textContent=p.name;$('p_sigs').innerHTML=p.sigs.map(s=>{const ic=ICO[s]?'<span class="sig-ic" style="--m:url('+__A['tfs_mock_assets/'+ICO[s]]+')"></span>':'';return '<span class="sig">'+ic+s+'</span>';}).join('');const im=$('p_img');im.style.opacity=0;setTimeout(()=>{im.src=__A['tfs_mock_assets/'+p.img];im.style.transition='opacity .4s';im.style.opacity=1;},180);}
 document.querySelectorAll('.switch button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.switch button').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-selected','false');});b.classList.add('active');b.setAttribute('aria-selected','true');setP(b.dataset.p);}));
 setP('site');
 
@@ -991,5 +991,57 @@ if(window.IntersectionObserver){new IntersectionObserver(es=>es.forEach(e=>onVie
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(!ov.hidden)closeOverlay();else if(!panel.hidden)closeChat();}});
 })();
 </script>
+
+<style>
+#p_report_anim{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;border-radius:inherit;background:linear-gradient(180deg,#fbfaf6,#f3efe6)}
+#p_report_anim .rep{width:100%;max-width:540px;background:#fffdf9;border:1px solid #e7e1d4;border-radius:16px;box-shadow:0 14px 34px rgba(20,30,40,.14);padding:16px 18px 14px;position:relative;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+#p_report_anim .rtop{display:flex;align-items:center;gap:9px;border-bottom:1px solid #e7e1d4;padding-bottom:11px;margin-bottom:4px}
+#p_report_anim .rdot{width:11px;height:11px;border-radius:50%;background:#b9912f;flex:none}
+#p_report_anim .rttl{font-weight:800;color:#15202e;letter-spacing:-.01em;font-size:15px}
+#p_report_anim .rloc{margin-left:auto;font-size:12px;color:#5d6775}
+#p_report_anim .rrow{display:flex;align-items:center;gap:11px;padding:9px 2px;border-bottom:1px solid #f0ece1;opacity:0;transform:translateY(8px);animation:repIn .55s ease forwards}
+#p_report_anim .rrow:nth-child(2){animation-delay:.25s}
+#p_report_anim .rrow:nth-child(3){animation-delay:.6s}
+#p_report_anim .rrow:nth-child(4){animation-delay:.95s}
+#p_report_anim .rrow:nth-child(5){animation-delay:1.3s}
+#p_report_anim .ric{width:12px;height:12px;border-radius:50%;flex:none}
+#p_report_anim .sev-red{background:#f2555a}#p_report_anim .sev-amber{background:#e2a33b}#p_report_anim .sev-green{background:#5bc089}
+#p_report_anim .rnm{color:#15202e;font-weight:600;font-size:13.5px}
+#p_report_anim .rmeta{margin-left:auto;position:relative;min-width:96px;height:18px;font-size:12px;font-weight:700;text-align:right}
+#p_report_anim .rmeta span{position:absolute;right:0;top:0;white-space:nowrap}
+#p_report_anim .s-filed{color:#5d6775;animation:repFade .8s ease forwards;animation-delay:1.7s}
+#p_report_anim .s-res{color:#1f8a4c;opacity:0;animation:repIn2 .8s ease forwards;animation-delay:1.8s}
+#p_report_anim .rfoot{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:12.5px;color:#1f8a4c;font-weight:700;opacity:0;animation:repIn .6s ease forwards;animation-delay:2.2s}
+#p_report_anim .rscan{position:absolute;left:0;right:0;top:-46px;height:46px;background:linear-gradient(180deg,rgba(185,145,47,0),rgba(185,145,47,.14),rgba(185,145,47,0));animation:repScan 4.8s ease-in-out infinite;pointer-events:none}
+@keyframes repIn{to{opacity:1;transform:none}}
+@keyframes repIn2{to{opacity:1}}
+@keyframes repFade{to{opacity:0}}
+@keyframes repScan{0%{top:-46px}55%{top:100%}100%{top:100%}}
+@media (prefers-reduced-motion:reduce){#p_report_anim *{animation:none!important;opacity:1!important;transform:none!important}#p_report_anim .s-filed{display:none}}
+</style>
+<script>
+(function(){
+  function init(){
+    var img=document.getElementById('p_img'); if(!img){return;}
+    var host=img.parentElement; if(!host){return;}
+    if(getComputedStyle(host).position==='static'){host.style.position='relative';}
+    var a=document.createElement('div'); a.id='p_report_anim';
+    a.innerHTML='<div class="rep">'
+      +'<div class="rtop"><span class="rdot"></span><span class="rttl">SiteScope \u00b7 Arrival Report</span><span class="rloc">Quarter-mile \u00b7 Los Angeles</span></div>'
+      +'<div class="rrow"><span class="ric sev-red"></span><span class="rnm">Pothole \u2014 0.82 m, priority</span><span class="rmeta"><span class="s-filed">Filed</span><span class="s-res">\u2713 Resolved</span></span></div>'
+      +'<div class="rrow"><span class="ric sev-amber"></span><span class="rnm">Graffiti \u2014 3.1 m\u00b2</span><span class="rmeta"><span class="s-filed">Filed</span><span class="s-res">\u2713 Resolved</span></span></div>'
+      +'<div class="rrow"><span class="ric sev-amber"></span><span class="rnm">Broken sidewalk \u2014 6 m run</span><span class="rmeta"><span class="s-filed">Filed</span><span class="s-res">\u2713 Resolved</span></span></div>'
+      +'<div class="rrow"><span class="ric sev-green"></span><span class="rnm">Illegal dumping</span><span class="rmeta"><span class="s-filed">Filed</span><span class="s-res">\u2713 Resolved</span></span></div>'
+      +'<div class="rfoot">\u25cf 48 conditions filed &amp; tracked to closure</div>'
+      +'<div class="rscan"></div></div>';
+    host.appendChild(a);
+    function update(k){ if(k==='site'){a.style.display='flex';img.style.visibility='hidden';} else {a.style.display='none';img.style.visibility='visible';} }
+    document.querySelectorAll('.switch button').forEach(function(b){b.addEventListener('click',function(){update(b.dataset.p);});});
+    update('site');
+  }
+  if(document.readyState!=='loading'){setTimeout(init,300);} else {window.addEventListener('DOMContentLoaded',function(){setTimeout(init,300);});}
+})();
+</script>
+
 </body>
 </html>
