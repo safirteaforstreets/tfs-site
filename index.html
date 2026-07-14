@@ -537,9 +537,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
   </div>
 </section>
 
-<section class="statement section">
-  <div class="wrap"><p class="reveal">The condition of physical space — a street, a block, a property — is unmeasured and quietly expensive. <span class="em">We make it operable.</span></p></div>
-</section>
+
 
 <!-- ENGINE -->
 
@@ -607,8 +605,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
     </div>
     <div class="switch reveal" role="tablist" aria-label="Choose a product">
       <button data-p="site" class="active" type="button" role="tab" aria-selected="true">SiteScope</button>
-      <button data-p="street" type="button" role="tab" aria-selected="false">CLARK AI</button>
-      <button data-p="asset" type="button" role="tab" aria-selected="false">AssetScope</button>
+      
+      
     </div>
     <div class="pview reveal" id="pview">
       <div>
@@ -650,21 +648,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
     </div>
   </div>
 </section>
-<section id="traction" class="night">
-  <div class="wrap">
-    <div class="shead reveal">
-      <span class="eyebrow">Traction</span>
-      <h2>Deployed, not theoretical.</h2>
-      <p class="lede">Real captures, real filings, real closures — every figure measured, not projected.</p>
-    </div>
-    <div class="stats">
-      <div class="stat reveal"><div class="n"><span data-count="12">12</span>+</div><div class="l">properties &amp; corridors field-scanned to date</div></div>
-      <div class="stat reveal"><div class="n"><span data-count="48">48</span></div><div class="l">requests tracked to resolution at one enterprise property</div></div>
-      <div class="stat reveal"><div class="n"><span data-count="2">2</span></div><div class="l">completed field pilots</div></div>
-    </div>
-    <div class="proofline reveal"><span>Inbound enterprise pilot in negotiation — a 900+ location international operator</span></div>
-  </div>
-</section>
+
 
 
 <div class="bridge b-w2d" aria-hidden="true"></div>
@@ -724,30 +708,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
 </section>
 
 <!-- FUTURE -->
-<section class="future">
-  <div class="wrap narrow">
-    <span class="eyebrow reveal">What's next · VE Dispatch</span>
-    <h2 class="reveal">The next step isn't detection. It's coordination.</h2>
-    <p class="lede reveal">VE Dispatch routes issues to the right person, contractor, or system and tracks resolution from assignment to closure. Long-term, as autonomous repair systems become practical, the same infrastructure can route work to machines as easily as it routes work to people.</p>
-    <span class="ftag reveal">Coordination today · autonomy over time</span>
-  </div>
-</section>
+
 
 <!-- CTA -->
 
-<section id="invest-teaser">
-  <div class="wrap">
-    <div class="shead reveal">
-      <span class="eyebrow">For investors</span>
-      <h2>The largest un-instrumented asset class.</h2>
-      <p class="lede">The street shapes every property’s value — and is almost entirely unmeasured. Founded by a $2B+ infrastructure program leader (USAF Reserve) and a 12-year mobile engineer (USMC).</p>
-    </div>
-    <div class="segrow reveal">
-      <a href="mailto:safir@teaforstreets.app?subject=Tea%20For%20Streets%20investor%20deck" class="btn btn-gold">Request the deck →</a>
-      <a href="investors.html" class="lnk">For investors ›</a>
-    </div>
-  </div>
-</section>
+
 <section id="cta" class="cta">
   <div class="wrap center">
     <div class="shead center reveal">
@@ -814,9 +779,7 @@ document.querySelectorAll('.pl').forEach(el=>bio.observe(el));
 const sbio=new IntersectionObserver((es)=>{es.forEach(e=>{if(!e.isIntersecting)return;const b=e.target.querySelector('.ss-bar i');if(b)b.style.width=b.dataset.w+'%';sbio.unobserve(e.target);});},{threshold:.4});
 document.querySelectorAll('.ss-prow').forEach(el=>sbio.observe(el));
 const P={
-  site:{tag:'<span class="livedot"></span>Live',col:'var(--green)',env:'Outside the property',name:'SiteScope',desc:'For commercial real estate. We survey the quarter-mile around the property and track each fix to closure.',vert:'Commercial real estate',out:'Filed &amp; closed',sigs:[],cta:'See a sample SiteScope report ›',img:'prod_sitescope_wide.jpg'},
-  street:{tag:'<span class="livedot"></span>Live',col:'var(--green)',env:'Press and hold to talk',name:'CLARK AI',desc:'Our public app. Hold to talk — tell CLARK AI what you see and it files the report, then tracks it to closure. Free on the App Store.',vert:'Public / residents',out:'Filed &amp; tracked to closure',sigs:[],cta:'View CLARK AI on the App Store ›',img:'prod_streetscope_wide.jpg'},
-  asset:{tag:'Coming soon',col:'var(--s-amber)',env:'Enterprise infrastructure',name:'AssetScope',desc:'For large infrastructure programs. Physical assets as a structured, longitudinal data layer — across portfolios, corridors, and capital programs.',vert:'Enterprise infrastructure programs',out:'Condition of record',sigs:[],cta:'',img:'prod_assetscope_wide.jpg'}
+  site:{tag:'<span class="livedot"></span>Live',col:'var(--green)',env:'Outside the property',name:'SiteScope',desc:'For commercial real estate. We survey the quarter-mile around the property and track each fix to closure.',vert:'Commercial real estate',out:'Filed &amp; closed',sigs:[],cta:'See a sample SiteScope report ›',img:'prod_sitescope_wide.jpg'}
 };
 const $=id=>document.getElementById(id);
 const ICO={Trash:'icon_trash.svg',Graffiti:'icon_graffiti.svg',USL:'icon_usl.svg',Potholes:'icon_pothole.svg'};
