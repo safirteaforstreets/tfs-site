@@ -37,8 +37,8 @@
       "logo": "https://teaforstreets.app/tfs_logo.png",
       "description": "Tea For Streets is an infrastructure-intelligence company. One Vision Engine (VE) Platform captures conditions on the ground, understands them, and dispatches the fix across streets and properties.",
       "foundingDate": "2026",
-      "email": "admin@teaforstreets.app",
-      "slogan": "One Vision Engine (VE) Platform. Multiple operating environments.",
+      "email": "support@teaforstreets.app",
+      "slogan": "Every great city deserves great streets.",
       "address": { "@type": "PostalAddress", "addressRegion": "CA", "addressCountry": "US" },
       "knowsAbout": ["infrastructure intelligence", "LiDAR", "computer vision", "municipal service requests", "property condition assessment"],
       "makesOffer": [
@@ -541,21 +541,26 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
 
 <!-- ENGINE -->
 
-<section id="voice">
+<section id="clark">
   <div class="wrap">
     <div class="shead reveal">
-      <span class="eyebrow">CLARK AI · Voice</span>
-      <h2>Say it. It’s already moving.</h2>
-      <p class="lede">Hands stay on the wheel. CLARK AI hears it, files it through the right channel, and tracks it until it’s closed.</p>
+      <span class="eyebrow">CLARK AI · our flagship</span>
+      <h2>Show CLARK AI what’s broken.</h2>
+      <p class="lede">Our public app. Hold to talk — tell CLARK AI what you see, and it files the report through the right channel and tracks it to closure.</p>
+      <div class="ctrack" id="ctrack">
+        <div class="crow"><span>Tracking</span><b>TFS-XXXX · Pothole</b></div>
+        <div class="csteps">
+          <div class="cstep done"><div class="cdot"></div>Received</div><div class="cbar"></div>
+          <div class="cstep"><div class="cdot"></div>On it</div><div class="cbar"></div>
+          <div class="cstep"><div class="cdot"></div>Resolved</div>
+        </div>
+      </div>
+      <div class="csent" id="csent">Sent. CLARK AI’s on it.</div>
+      <a class="appstore" href="https://apps.apple.com/us/app/tea-for-streets/id6753090441">Get CLARK AI on the App Store →</a>
     </div>
-    <div class="vx" id="vx">
-      <div class="vx-orb"><canvas class="clark-orb-auto" width="88" height="88" aria-hidden="true"></canvas><span class="vx-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
-      <blockquote class="vx-say">“Hey Siri, tell CLARK AI there’s a pothole at Mason and O’Farrell.”</blockquote>
-      <ol class="vx-steps">
-        <li><span class="vx-k">Heard</span><span class="vx-v">0.8s</span></li>
-        <li><span class="vx-k">Filed</span><span class="vx-v">Routed</span></li>
-        <li><span class="vx-k">Tracked to closure</span><span class="vx-v">TFS-4127</span></li>
-      </ol>
+    <div class="cstage">
+      <div class="ctip" id="ctip">Press and hold to talk</div>
+      <canvas id="corb" aria-label="CLARK AI — press and hold to talk"></canvas>
     </div>
   </div>
 </section>
@@ -600,7 +605,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
   <div class="wrap">
     <div class="shead reveal">
       <span class="eyebrow">The products</span>
-      <h2>One Vision Engine (VE) Platform. Multiple operating environments.</h2>
+      <h2>Every great city deserves great streets.</h2>
       <p class="lede">The same three layers, pointed at different physical environments. Each product speaks to one operator and one outcome.</p>
     </div>
     <div class="switch reveal" role="tablist" aria-label="Choose a product">
@@ -665,29 +670,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
 .sx-step span{color:var(--nmuted);font-size:.93rem}
 @media(max-width:780px){.sx{grid-template-columns:1fr;gap:32px}.sx-phones img{max-width:190px}}
 </style>
-<section id="clark">
-  <div class="wrap">
-    <div class="shead reveal">
-      <span class="eyebrow">CLARK AI · our flagship</span>
-      <h2>Show CLARK AI what’s broken.</h2>
-      <p class="lede">Our public app. Hold to talk — tell CLARK AI what you see, and it files the report through the right channel and tracks it to closure.</p>
-      <div class="ctrack" id="ctrack">
-        <div class="crow"><span>Tracking</span><b>TFS-XXXX · Pothole</b></div>
-        <div class="csteps">
-          <div class="cstep done"><div class="cdot"></div>Received</div><div class="cbar"></div>
-          <div class="cstep"><div class="cdot"></div>On it</div><div class="cbar"></div>
-          <div class="cstep"><div class="cdot"></div>Resolved</div>
-        </div>
-      </div>
-      <div class="csent" id="csent">Sent. CLARK AI’s on it.</div>
-      <a class="appstore" href="https://apps.apple.com/us/app/tea-for-streets/id6753090441">Get CLARK AI on the App Store →</a>
-    </div>
-    <div class="cstage">
-      <div class="ctip" id="ctip">Press and hold to talk</div>
-      <canvas id="corb" aria-label="CLARK AI — press and hold to talk"></canvas>
-    </div>
-  </div>
-</section>
+
 
 <!-- DATA -->
 <section id="data" class="night">
@@ -703,7 +686,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
       <div class="stat reveal"><div class="n"><span data-count="48">48</span> hr</div><div class="l">survey to delivered report</div></div>
     </div>
     <div class="proofline reveal">&ldquo;Over 100 conditions in the quarter-mile — nine within the first hundred steps of the door.&rdquo;<span>— from our first enterprise capture at a major hotel</span></div>
-    <div class="illus reveal">◦ Figures from TFS captures &amp; the SiteScope Depth Lab. Municipal closures range from under 3 days to over 200 — which is why we track every request to resolution.</div>
+    
   </div>
 </section>
 
@@ -737,10 +720,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
         <div style="font-family:'IBM Plex Mono';font-size:.62rem;letter-spacing:.04em;color:#7e8aa0;margin-top:14px">TFS Live, Inc. · Delaware C-corp · Incorporated 2026</div>
       </div>
       <div><h3>The platform</h3><a href="#see-it">VE Mobile</a><a href="#see-it">VE Ops</a><a href="#see-it">VE Dispatch</a></div>
-      <div><h3>Products</h3><a href="#products">SiteScope</a><a href="#streetscope">CLARK AI</a><a href="#products">AssetScope</a></div>
-      <div><h3>Company</h3><a href="#data">Data &amp; impact</a><a href="#see-it">The Vision Engine (VE) Platform</a><a href="privacy.html">Privacy</a><a href="mailto:admin@teaforstreets.app">admin@teaforstreets.app</a></div>
+      
+      <div><h3>Company</h3><a href="#data">Data &amp; impact</a><a href="#see-it">The Vision Engine (VE) Platform</a><a href="privacy.html">Privacy</a><a href="mailto:support@teaforstreets.app">support@teaforstreets.app</a></div>
     </div>
-    <div class="foot-bottom"><span>© 2026 Tea For Streets, Inc.</span><span>One Vision Engine (VE) Platform. Multiple operating environments.</span></div>
+    <div class="foot-bottom"><span>© 2026 Tea For Streets, Inc.</span><span>Every great city deserves great streets.</span></div>
   </div>
 </footer>
 
