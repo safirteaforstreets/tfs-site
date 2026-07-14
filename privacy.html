@@ -72,7 +72,7 @@ footer{background:var(--black);color:var(--nmuted);padding:44px 0;font-size:.86r
   <span class="eyebrow">Legal</span>
   <h1>Privacy Policy</h1>
   <p class="lede">Your data matters. Understanding our commitment to you.</p>
-  <p style="color:var(--muted);font-size:.9rem;margin-top:8px">Last updated: June 19, 2026</p>
+  <p style="color:var(--muted);font-size:.9rem;margin-top:8px">Last updated: July 13, 2026</p>
 </div></section>
 
 <section><div class="wrap">
@@ -84,7 +84,7 @@ footer{background:var(--black);color:var(--nmuted);padding:44px 0;font-size:.86r
     <li><strong>Street-Level Imagery</strong> — photographs and video from public streets and infrastructure areas used for infrastructure analysis and detection.</li>
     <li><strong>Location &amp; GPS Data</strong> — GPS coordinates, street addresses, and geographic metadata associated with imagery and reports. This may include precise location data embedded in image metadata (EXIF).</li>
     <li><strong>Infrastructure Issue Reports</strong> — data about detected or reported infrastructure defects, including category, severity, descriptions, and related attributes.</li>
-    <li><strong>Resident Street Reports</strong> — when you report a street or infrastructure issue through our public reporting tool, we collect the issue category and any description, the location (an address, cross-streets, or precise GPS coordinates if you choose &ldquo;Use my location&rdquo;), any photo you attach (including location metadata, or EXIF, contained in it), and the email address you provide so we can send you updates.</li>
+    <li><strong>Public Street Reports</strong> — when you report a street or infrastructure issue through our public reporting tool, we collect the issue category and any description, the location (an address, cross-streets, or precise GPS coordinates if you choose &ldquo;Use my location&rdquo;), any photo you attach (including location metadata, or EXIF, contained in it), and the email address you provide so we can send you updates.</li>
     <li><strong>Contact &amp; Lead Information</strong> — name, email address, phone number, organization, and inquiry details submitted through contact forms, Microsoft Forms, demo requests, or investor inquiries.</li>
     <li><strong>Account Information</strong> — credentials, profile details, and authentication information if you create or maintain a platform account.</li>
     <li><strong>Usage &amp; Analytics Data</strong> — app or platform usage events, feature interactions, session logs, crash reports, and performance metrics to improve the Service.</li>
@@ -104,12 +104,14 @@ footer{background:var(--black);color:var(--nmuted);padding:44px 0;font-size:.86r
   </ul>
   <h2>Reports &amp; Form Submissions</h2>
   <p>Demo requests, investor interest submissions, and other contact form inquiries are collected via Microsoft Forms. When you submit a form, your name, email, phone number (if provided), organization, and inquiry details are captured and may be stored by both Tea For Streets and Microsoft. These details are used to respond to your inquiry, schedule demos, provide investor information, or otherwise communicate with you about our platform.</p>
-  <p>Resident street-issue reports submitted through our public reporting tool are delivered to our team using a third-party form-delivery service and sent to admin@teaforstreets.app. The information in a report — your email, the location and any GPS coordinates, and details of any photo — may then be submitted to the relevant municipal 311 system to request a repair. We use your email only to send you updates about your report.</p>
+  <p>When you submit a street-issue report, it is stored in our own backend (Firebase) and reviewed by our team in an internal dashboard. If the issue is in an area we currently serve, we file it with the relevant municipal 311 system on your behalf. Those filings are submitted anonymously — we do not send your name, email, or account information to the city. What we do send is the issue type, the location (street address and/or GPS coordinates), your photo, and, in some cases, a repair-cost assessment we generate from that photo.</p>
+      <p>Not every report is forwarded to a city. If you report an issue outside the areas we currently serve, we keep your report and it still counts toward your account, but we do not submit it to a 311 system. You'll be told in the app when this is the case.</p>
+      <p>We collect your email address when you create an account with Sign in with Apple. We use it to identify your account and to let you see the reports you've filed. We do not sell it, and we do not share it with the city. Updates about your report are delivered as push notifications and in the app.</p>
   <h2>Data Sharing</h2>
   <p>Tea For Streets does not sell personal data to third parties for marketing purposes. We may share information only with:</p>
   <ul>
-    <li><strong>Service providers</strong> — cloud storage, analytics, security monitoring, email, and platform infrastructure partners</li>
-    <li><strong>Form-delivery providers</strong> — report submissions may be processed by a third-party form-delivery service to route them to our team</li>
+    <li><strong>Service providers</strong> — cloud storage, analytics, security monitoring, email, and platform infrastructure partners. Where AI voice and language features are used (our Clark assistant), speech and text are processed by <strong>Microsoft Azure</strong> AI services</li>
+    <li><strong>Report processing</strong> — street-issue reports are processed through our own backend infrastructure and routed to our team</li>
     <li><strong>Municipal agencies</strong> — when you report a street or infrastructure issue, the report and its location may be submitted to the relevant city&rsquo;s 311 service to request a repair</li>
     <li><strong>Legal authorities</strong> — when required by law, court order, or government request</li>
     <li><strong>Business partners</strong> — if you are an authorized B2B user, your organization and usage data may be shared with your account administrator</li>
@@ -124,7 +126,7 @@ footer{background:var(--black);color:var(--nmuted);padding:44px 0;font-size:.86r
     <li>Correction of inaccurate information</li>
     <li>Deletion of your account and associated personal data (subject to legal retention requirements)</li>
   </ul>
-  <p>To submit any of these requests, email <a href="mailto:admin@teaforstreets.app">admin@teaforstreets.app</a>. We will process requests within a reasonable timeframe.</p>
+  <p>To submit any of these requests, email <a href="mailto:support@teaforstreets.app">support@teaforstreets.app</a>. We will process requests within a reasonable timeframe.</p>
   <h2>Children's Privacy</h2>
   <p>Tea For Streets is not directed to children under 13. We do not knowingly collect personal information from children under 13. If we become aware that we have collected data from a child under 13, we will take steps to delete such information promptly.</p>
   <h2>Security</h2>
@@ -132,7 +134,7 @@ footer{background:var(--black);color:var(--nmuted);padding:44px 0;font-size:.86r
   <h2>Changes to This Policy</h2>
   <p>Tea For Streets may update this Privacy Policy to reflect changes in our practices or applicable law. We will notify users of material changes and obtain consent where required. Your continued use of the Service constitutes acceptance of updated policies.</p>
   <h2>Contact Us</h2>
-  <p>If you have questions about this Privacy Policy, your data, or our privacy practices, contact us at <a href="mailto:admin@teaforstreets.app">admin@teaforstreets.app</a>.</p>
+  <p>If you have questions about this Privacy Policy, your data, or our privacy practices, contact us at <a href="mailto:support@teaforstreets.app">support@teaforstreets.app</a>.</p>
   </div>
 </div></section>
 
