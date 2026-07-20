@@ -509,6 +509,17 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
 .fcard p{color:#A9A296;font-size:14.5px;line-height:1.6;margin:0 0 10px}
 .fcard p b{color:#EFEADC;font-weight:600}
 @media(max-width:860px){.fteam{grid-template-columns:1fr}}
+.values{background:var(--paper);color:var(--ink);padding:clamp(70px,9vw,124px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.values .eyebrow{color:#b9912f}
+.values h2{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(2.1rem,5vw,3.4rem);color:var(--ink);margin:12px 0 0;line-height:1.05}
+.values .lede{color:var(--muted);max-width:58ch;margin:18px 0 0}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:clamp(42px,5vw,66px);background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.vitem{background:var(--paper);padding:clamp(26px,3vw,40px);transition:background .3s ease}
+.vitem:hover{background:#fbfaf6}
+.vsrc{font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#b9912f}
+.vitem h3{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:clamp(1.35rem,2.2vw,1.72rem);color:var(--ink);margin:14px 0 10px;line-height:1.12}
+.vitem p{color:var(--muted);font-size:.98rem;line-height:1.62;margin:0}
+@media(max-width:860px){.vgrid{grid-template-columns:1fr}}
 </style>
 
 </head>
@@ -574,6 +585,24 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
         </div>
       </div>
       <div class="proofline reveal"><span>Built with the USC Viterbi Startup Garage · Harvard Business School Foundry · TFS Live, Inc., a Delaware C-corp</span></div>
+    </div>
+  </section>
+
+  <section class="values">
+    <div class="wrap">
+      <div class="vhead reveal">
+        <span class="eyebrow">What we carry</span>
+        <h2>Forged in service.</h2>
+        <p class="lede">Two founders, two branches. The standard we hold at Tea For Streets is the one we were trained on — Air Force and Marine Corps — sharpened by what the street demands.</p>
+      </div>
+      <div class="vgrid">
+        <div class="vitem reveal"><span class="vsrc">U.S. Air Force</span><h3>Integrity first</h3><p>We report what&rsquo;s actually there. No inflated scores, no invented metrics.</p></div>
+        <div class="vitem reveal"><span class="vsrc">U.S. Air Force</span><h3>Service before self</h3><p>The block comes before the invoice. Residents are who the work answers to.</p></div>
+        <div class="vitem reveal"><span class="vsrc">U.S. Air Force</span><h3>Excellence in all we do</h3><p>Every survey is field-grade. If it ships with our name on it, it&rsquo;s right.</p></div>
+        <div class="vitem reveal"><span class="vsrc">U.S. Marine Corps</span><h3>Courage</h3><p>We name what&rsquo;s broken, even when it&rsquo;s easier to look past it.</p></div>
+        <div class="vitem reveal"><span class="vsrc">U.S. Marine Corps</span><h3>Commitment</h3><p>We track every issue to closure. We don&rsquo;t file it and forget it.</p></div>
+        <div class="vitem reveal"><span class="vsrc">The work</span><h3>Speed</h3><p>A city in motion can&rsquo;t wait. We move the moment we see it.</p></div>
+      </div>
     </div>
   </section>
 
