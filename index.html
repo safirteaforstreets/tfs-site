@@ -466,7 +466,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
 .tcp-foot{padding:8px 16px;font-size:.64rem;color:var(--muted);background:var(--paper);border-top:1px solid var(--line);text-align:center}
 @media(max-width:560px){.tfs-chat-launch .cl-tx{display:none}.tfs-chat-launch{padding:.85em}}
 </style>
-<style>.livedot{display:inline-block;width:.5em;height:.5em;border-radius:50%;background:#1f8a4c;margin-right:.45em;vertical-align:middle;animation:livePulse 2.2s ease-out infinite}@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(31,138,76,.5)}70%{box-shadow:0 0 0 .5em rgba(31,138,76,0)}100%{box-shadow:0 0 0 0 rgba(31,138,76,0)}}@media(prefers-reduced-motion:reduce){.livedot{animation:none}}</style><style id="hero-fix">.hero .lede{color:#c4cad4}.hero .hero-proof{margin-top:22px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;line-height:1.7;letter-spacing:.13em;text-transform:uppercase;color:#aab2be}</style>
+<style>.livedot{display:inline-block;width:.5em;height:.5em;border-radius:50%;background:#1f8a4c;margin-right:.45em;vertical-align:middle;animation:livePulse 2.2s ease-out infinite}@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(31,138,76,.5)}70%{box-shadow:0 0 0 .5em rgba(31,138,76,0)}100%{box-shadow:0 0 0 0 rgba(31,138,76,0)}}@media(prefers-reduced-motion:reduce){.livedot{animation:none}}</style><style id="hero-fix">.hero .lede{color:#c4cad4}.hero .hero-proof{margin-top:22px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;line-height:1.7;letter-spacing:.13em;text-transform:uppercase;color:#aab2be}@media(max-width:560px){.hero{min-height:auto;align-items:flex-start;padding:clamp(88px,22vw,120px) 0 clamp(48px,10vw,70px)}}</style>
 <style id="clark-orb-css">.tfs-chat-launch img,.tcp-id img{display:none!important}.tfs-chat-launch{background:#131110!important;border:1px solid rgba(201,162,75,.55)!important;color:#F2EEE3!important;gap:11px!important;padding-left:8px!important}.tfs-chat-launch .cl-tx{color:#F4F0E6!important;font-weight:500!important}canvas.clark-mini{width:36px;height:36px;display:block;flex:0 0 auto}canvas.clark-avatar{width:40px;height:40px;display:block;flex:0 0 auto}</style>
 <style id="tfs-polish">.tfs-chat-launch{transform:scale(.82);transform-origin:bottom right;right:max(16px,env(safe-area-inset-right))!important;bottom:calc(16px + env(safe-area-inset-bottom))!important;box-shadow:0 8px 24px rgba(0,0,0,.45)!important;border-color:rgba(201,162,75,.42)!important}canvas.clark-mini{width:32px!important;height:32px!important}@media(max-width:400px){.tfs-chat-launch{transform:scale(.74);transform-origin:bottom right}}.pin-dots{display:flex;gap:8px;align-items:center}.pin-dots i{width:26px;height:2px;border-radius:2px;background:#3A3630;display:block;transition:background .35s ease}.pin-dots i.on{background:#C9A24B}@media(max-width:768px){#see-it .lede{font-size:clamp(15px,4.1vw,17px);line-height:1.55;max-width:34ch}#see-it .pin-badge{font-size:11px;letter-spacing:.12em}#see-it{min-height:auto}}@media(prefers-reduced-motion:reduce){.pin-dots i{transition:none}}</style>
 <style id="tfs-launch-fix">@media(max-width:560px){.tfs-chat-launch{padding:0!important;width:54px;height:54px;justify-content:center;align-items:center;gap:0!important}canvas.clark-mini{width:34px!important;height:34px!important}}</style>
@@ -482,8 +482,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
 #clark .ctip{position:absolute;top:4%;left:50%;transform:translateX(-50%);background:#F7F3E9;color:#1C1914;border-radius:99px;padding:9px 18px;font-size:14px;font-weight:500;white-space:nowrap;box-shadow:0 8px 26px rgba(0,0,0,.35);transition:.35s;z-index:2}
 #clark .ctip::after{content:"";position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);border:7px solid transparent;border-top-color:#F7F3E9;border-bottom:none}
 #clark .ctip.hide{opacity:0;transform:translateX(-50%) translateY(-6px)}
-#clark .ctrack{margin-top:24px;background:rgba(255,255,255,.05);border:1px solid rgba(242,238,227,.10);border-radius:16px;padding:18px 22px;opacity:0;transform:translateY(8px);transition:.5s;max-width:430px}
-#clark .ctrack.show{opacity:1;transform:none}
+#clark .ctrack{margin-top:0;max-height:0;overflow:hidden;background:rgba(255,255,255,.05);border:1px solid transparent;border-radius:16px;padding:0 22px;opacity:0;transition:max-height .5s ease,opacity .5s ease,margin-top .5s ease,padding .5s ease,border-color .5s ease;max-width:430px}
+#clark .clark-acro{margin-top:clamp(26px,3vw,36px);max-width:440px;border-top:1px solid rgba(242,238,227,.11)}
+#clark .ca-cap{display:block;font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:#8E8879;margin:14px 0 6px}
+#clark .ca-row{display:flex;align-items:baseline;gap:16px;padding:11px 2px;border-bottom:1px solid rgba(242,238,227,.07)}
+#clark .ca-row:last-child{border-bottom:0}
+#clark .ca-l{font-family:'Fraunces',Georgia,serif;font-weight:500;font-size:25px;color:#C9A24B;flex:0 0 22px;text-align:center;line-height:1}
+#clark .ca-w{font-size:16.5px;color:#E7E1D2;letter-spacing:.005em}
+#clark .ca-w b{color:#F7F3E9;font-weight:600}
+#clark .ctrack.show{opacity:1;max-height:240px;margin-top:24px;padding:18px 22px;border-color:rgba(242,238,227,.10)}
 #clark .crow{display:flex;justify-content:space-between;align-items:baseline;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:#8E8879;text-transform:uppercase}
 #clark .crow b{color:#F2EEE3;letter-spacing:.08em}
 #clark .csteps{display:flex;align-items:center;gap:8px;margin-top:14px}
@@ -492,8 +499,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
 #clark .cstep.done .cdot{background:#3E8F5F;border-color:#3E8F5F}
 #clark .cstep.done .cdot::after{content:'\2713';color:#0B0A09;font-size:11px;font-weight:800}
 #clark .cbar{flex:1;height:2px;background:#2A2721;border-radius:2px;margin-bottom:18px}
-#clark .csent{font-family:'Fraunces',Georgia,serif;font-size:26px;margin-top:16px;opacity:0;transition:.5s;color:#F7F3E9}
-#clark .csent.show{opacity:1}
+#clark .csent{font-family:'Fraunces',Georgia,serif;font-size:26px;margin-top:0;max-height:0;overflow:hidden;opacity:0;transition:max-height .5s ease,opacity .5s ease,margin-top .5s ease;color:#F7F3E9}
+#clark .csent.show{opacity:1;max-height:64px;margin-top:16px}
 #clark .appstore{display:inline-block;margin-top:20px;color:#C9A24B;font-weight:500}
 @media(max-width:900px){#clark .wrap{grid-template-columns:1fr;gap:26px}#clark .lede{max-width:none}}
 </style>
@@ -608,6 +615,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
       <span class="eyebrow">CLARK AI · our flagship</span>
       <h2>Show CLARK AI what’s broken.</h2>
       <p class="lede">Our public app. Press and hold, say what you see — CLARK AI writes the report, files it through the right channel, and follows it until it’s closed.</p>
+       <div class="clark-acro reveal" aria-label="CLARK stands for Civic Liaison for Action Reporting and Knowledge">
+         <span class="ca-cap">What CLARK stands for</span>
+         <div class="ca-row"><span class="ca-l">C</span><span class="ca-w"><b>Civic</b></span></div>
+         <div class="ca-row"><span class="ca-l">L</span><span class="ca-w"><b>Liaison</b> for</span></div>
+         <div class="ca-row"><span class="ca-l">A</span><span class="ca-w"><b>Action</b></span></div>
+         <div class="ca-row"><span class="ca-l">R</span><span class="ca-w"><b>Reporting</b> &amp;</span></div>
+         <div class="ca-row"><span class="ca-l">K</span><span class="ca-w"><b>Knowledge</b></span></div>
+       </div>
       <div class="ctrack" id="ctrack">
         <div class="crow"><span>Tracking</span><b>TFS-XXXX · Pothole</b></div>
         <div class="csteps">
