@@ -703,7 +703,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
     </div>
     <div class="flowgrid">
       <div class="fstep reveal"><span class="fnum">01 &middot; Say it</span><h3>Report in seconds</h3><p>A photo or a sentence. CLARK writes the filing &mdash; location, severity, measurements &mdash; for you.</p></div>
-      <div class="fstep reveal"><span class="fnum">02 &middot; Filed</span><h3>Straight to your city</h3><p>Routed through the city&rsquo;s own 311 channels &mdash; deduplicated, geolocated, measured. A work order, not a complaint.</p></div>
+      <div class="fstep reveal"><span class="fnum">02 &middot; Filed</span><h3>Straight to your city</h3><p>Routed through the city&rsquo;s own 311 channels<sup style="font-size:.62em;color:var(--gold-text)">1</sup> &mdash; deduplicated, geolocated, measured. A work order, not a complaint.</p></div>
       <div class="fstep reveal"><span class="fnum">03 &middot; Closed</span><h3>Tracked to resolved</h3><p>CLARK follows the request until the city closes it &mdash; and tells you the moment it&rsquo;s done.</p></div>
     </div>
   </div>
@@ -781,6 +781,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
     </div>
     <div class="foot-bottom"><span>© 2026 Tea For Streets, Inc.</span><span>Every great city deserves great streets.</span></div>
   </div>
+  <div class="wrap"><p style="font-family:'IBM Plex Mono';font-size:.58rem;letter-spacing:.08em;line-height:1.7;color:var(--nmuted);opacity:.72;margin-top:26px">1&nbsp;&nbsp;CLARK files through official city 311 channels where available. Currently live in Los Angeles &mdash; expanding city by city.</p></div>
 </footer>
 
 
@@ -1011,6 +1012,65 @@ if(window.IntersectionObserver){new IntersectionObserver(es=>es.forEach(e=>onVie
   if(!('IntersectionObserver' in window)){ dev.classList.add('live'); return; }
   var io=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ dev.classList.add('live'); io.disconnect(); }});},{threshold:.2});
   io.observe(dev);
+})();
+</script>
+<script id="clark-orb-js">
+(function(){
+var rd=matchMedia("(prefers-reduced-motion: reduce)").matches;
+function n(a,s,p){return Math.sin(a*3+s*1.7+p)*.55+Math.sin(a*5-s*1.1+p*2.1)*.3+Math.sin(a*8+s*2.3-p)*.15;}
+var B=[[10,1.06,.10,.35,.95,1.5],[7,1.22,.17,.20,.55,1.3]];
+function orb(cv,px){var ctx=cv.getContext("2d"),D=Math.min(devicePixelRatio||1,2)*1.6,W,H,C,R;
+ function sz(){var r=cv.getBoundingClientRect();var w=r.width||px,h=r.height||px;W=cv.width=w*D;H=cv.height=h*D;C=W/2;R=W*.30;}
+ sz();addEventListener("resize",sz);
+ var sp=[];for(var q=0;q<5;q++)sp.push({a:Math.random()*6.283,r:1.05+Math.random()*.3,s:(.1+Math.random()*.25)*(q%2?1:-1),z:.5+Math.random()*.5});
+ var t=Math.random()*10;
+ function draw(){t+=rd?0:.016;var br=rd?0:(Math.sin(t*.8)*.5+.5);var E=(.34+br*.14)*1.25;
+  ctx.clearRect(0,0,W,H);var HR=Math.min(C,R*1.95);
+  var g=ctx.createRadialGradient(C,C,R*.55,C,C,HR);g.addColorStop(0,"rgba(190,168,110,.27)");g.addColorStop(1,"rgba(150,140,105,0)");
+  ctx.beginPath();ctx.arc(C,C,HR,0,6.2832);ctx.fillStyle=g;ctx.fill();
+  ctx.globalCompositeOperation="lighter";
+  for(var b=0;b<B.length;b++){var cn=B[b][0],ba=B[b][1],am=B[b][2],sd=B[b][3],al=B[b][4],wd=B[b][5];
+   for(var i=0;i<cn;i++){var ph=i*2.399+t*sd*(i%2?1:-1);var a2=Math.min(1,al*(.5+.5*Math.sin(i*1.7+t*.6))*(.45+E*.9));
+    var rr=R*(ba+(i/cn)*.05),A=R*am*(.5+E*1.4);ctx.beginPath();
+    for(var k=0;k<=140;k++){var ang=k/140*6.2832,rad=rr+A*n(ang,t*sd+i,ph);var x=C+Math.cos(ang)*rad,y=C+Math.sin(ang)*rad;if(k)ctx.lineTo(x,y);else ctx.moveTo(x,y);}
+    ctx.closePath();ctx.strokeStyle="rgba(226,190,104,"+a2.toFixed(3)+")";ctx.lineWidth=wd*D*(.8+E*.5);
+    ctx.shadowColor="rgba(214,178,94,.7)";ctx.shadowBlur=10*D*E;ctx.stroke();}}
+  for(var j=0;j<sp.length;j++){var s2=sp[j];s2.a+=s2.s*.01*(1+E*2);var sr=R*(s2.r+.06*Math.sin(t*1.3+s2.a*3));
+   ctx.beginPath();ctx.arc(C+Math.cos(s2.a)*sr,C+Math.sin(s2.a)*sr,(1+s2.z*1.6+E*1.2)*D*.8,0,6.2832);
+   ctx.fillStyle="rgba(244,230,180,"+Math.min(1,.25+.5*s2.z*E).toFixed(3)+")";ctx.shadowColor="rgba(244,230,180,.9)";ctx.shadowBlur=8*D*E;ctx.fill();}
+  ctx.globalCompositeOperation="source-over";ctx.shadowBlur=0;
+  g=ctx.createRadialGradient(C-R*.18,C-R*.1,R*.05,C,C,R);g.addColorStop(0,"rgba(238,218,158,1)");
+  g.addColorStop(.28,"#8A7439");g.addColorStop(.62,"#2E2717");g.addColorStop(1,"#0B0906");
+  ctx.beginPath();ctx.arc(C,C,R*(1+br*.006),0,6.2832);ctx.fillStyle=g;ctx.fill();
+  ctx.beginPath();ctx.arc(C,C,R,0,6.2832);ctx.strokeStyle="rgba(8,7,5,.85)";ctx.lineWidth=2*D;ctx.stroke();
+  g=ctx.createRadialGradient(C,C,0,C,C,R*.55);g.addColorStop(0,"rgba(250,236,190,.7)");g.addColorStop(1,"rgba(250,236,190,0)");
+  ctx.beginPath();ctx.arc(C,C,R*.55,0,6.2832);ctx.fillStyle=g;ctx.fill();
+  requestAnimationFrame(draw);}
+ draw();}
+function boot(){
+ var l=document.querySelector(".tfs-chat-launch");
+ if(l&&!l.querySelector("canvas.clark-mini")){var m=document.createElement("canvas");m.className="clark-mini";l.insertBefore(m,l.firstChild);orb(m,36);}
+
+ var main=document.getElementById("corb");
+ if(main && !main.dataset.on){main.dataset.on="1";
+  var tip=document.getElementById("ctip"),trk=document.getElementById("ctrack"),snt=document.getElementById("csent");
+  var st={mode:"idle",holdStart:0};
+  orb(main,420);
+  var go=function(e){ if(st.mode==="sent"){st.mode="idle";trk.classList.remove("show");snt.classList.remove("show");tip.classList.remove("hide");return;} e.preventDefault(); st.mode="hold"; st.holdStart=performance.now(); tip.classList.add("hide"); };
+  var up=function(){ if(st.mode!=="hold")return; var d=(performance.now()-st.holdStart)/1000; if(d>0.35){ st.mode="sent"; setTimeout(function(){trk.classList.add("show");snt.classList.add("show");},500); } else { st.mode="idle"; tip.classList.remove("hide"); } };
+  main.addEventListener("pointerdown",go); addEventListener("pointerup",up);
+  main.addEventListener("touchstart",go,{passive:false}); addEventListener("touchend",up);
+ }
+ var sw=document.querySelector("#products .switch");
+ if(sw && !sw.dataset.ord){var bs=[].slice.call(sw.querySelectorAll("button"));
+  var ck=bs.filter(function(b){return /CLARK/i.test(b.textContent);})[0];
+  if(ck){sw.dataset.ord="1"; sw.insertBefore(ck,sw.firstChild); ck.click();}}
+ document.querySelectorAll("canvas.clark-orb-auto").forEach(function(c){if(!c.dataset.on){c.dataset.on="1";orb(c,56);}});
+ var p=document.querySelector(".tcp-id");
+ if(p&&!p.querySelector("canvas.clark-avatar")){var a=document.createElement("canvas");a.className="clark-avatar";p.insertBefore(a,p.firstChild);orb(a,40);}
+}
+if(document.readyState!=="loading")boot();else document.addEventListener("DOMContentLoaded",boot);
+setTimeout(boot,900);setTimeout(boot,2200);document.addEventListener("click",function(){setTimeout(boot,300);});
 })();
 </script>
 </body>
