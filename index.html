@@ -478,7 +478,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
 #clark h2{color:#F7F3E9;margin:10px 0 16px}
 #clark .lede{color:#A9A296;max-width:44ch}
 #clark .cstage{position:relative;width:100%;max-width:420px;aspect-ratio:1;margin:0 auto;display:grid;place-items:center}
-#clark canvas{width:100%;height:100%;display:block;cursor:pointer;touch-action:none}
+#clark canvas{width:100%;height:100%;display:block;cursor:default}
 #clark .ctip{position:absolute;top:4%;left:50%;transform:translateX(-50%);background:#F7F3E9;color:#1C1914;border-radius:99px;padding:9px 18px;font-size:14px;font-weight:500;white-space:nowrap;box-shadow:0 8px 26px rgba(0,0,0,.35);transition:.35s;z-index:2}
 #clark .ctip::after{content:"";position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);border:7px solid transparent;border-top-color:#F7F3E9;border-bottom:none}
 #clark .ctip.hide{opacity:0;transform:translateX(-50%) translateY(-6px)}
@@ -624,19 +624,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
          <div class="ca-row"><span class="ca-l">R</span><span class="ca-w"><b>Reporting</b> &amp;</span></div>
          <div class="ca-row"><span class="ca-l">K</span><span class="ca-w"><b>Knowledge</b></span></div>
        </div>
-      <div class="ctrack" id="ctrack">
-        <div class="crow"><span>Tracking</span><b>TFS-XXXX · Pothole</b></div>
-        <div class="csteps">
-          <div class="cstep done"><div class="cdot"></div>Received</div><div class="cbar"></div>
-          <div class="cstep"><div class="cdot"></div>On it</div><div class="cbar"></div>
-          <div class="cstep"><div class="cdot"></div>Resolved</div>
-        </div>
-      </div>
-      <div class="csent" id="csent">Sent. CLARK AI’s on it.</div>
     </div>
     <div class="cstage">
-      <div class="ctip" id="ctip">Press and hold to talk</div>
-      <canvas id="corb" aria-label="CLARK AI — press and hold to talk"></canvas>
+      <canvas id="corb" aria-label="CLARK AI"></canvas>
     </div>
   </div>
 </section>
@@ -1055,13 +1045,7 @@ function boot(){
 
  var main=document.getElementById("corb");
  if(main && !main.dataset.on){main.dataset.on="1";
-  var tip=document.getElementById("ctip"),trk=document.getElementById("ctrack"),snt=document.getElementById("csent");
-  var st={mode:"idle",holdStart:0};
   orb(main,420);
-  var go=function(e){ if(st.mode==="sent"){st.mode="idle";trk.classList.remove("show");snt.classList.remove("show");tip.classList.remove("hide");return;} e.preventDefault(); st.mode="hold"; st.holdStart=performance.now(); tip.classList.add("hide"); };
-  var up=function(){ if(st.mode!=="hold")return; var d=(performance.now()-st.holdStart)/1000; if(d>0.35){ st.mode="sent"; setTimeout(function(){trk.classList.add("show");snt.classList.add("show");},500); } else { st.mode="idle"; tip.classList.remove("hide"); } };
-  main.addEventListener("pointerdown",go); addEventListener("pointerup",up);
-  main.addEventListener("touchstart",go,{passive:false}); addEventListener("touchend",up);
  }
  var sw=document.querySelector("#products .switch");
  if(sw && !sw.dataset.ord){var bs=[].slice.call(sw.querySelectorAll("button"));
