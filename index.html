@@ -1020,6 +1020,12 @@ function orb(cv,px){var ctx=cv.getContext("2d"),D=Math.min(devicePixelRatio||1,2
   ctx.clearRect(0,0,W,H);var HR=Math.min(C,R*1.95);
   var g=ctx.createRadialGradient(C,C,R*.55,C,C,HR);g.addColorStop(0,"rgba(190,168,110,.27)");g.addColorStop(1,"rgba(150,140,105,0)");
   ctx.beginPath();ctx.arc(C,C,HR,0,6.2832);ctx.fillStyle=g;ctx.fill();
+  g=ctx.createRadialGradient(C-R*.18,C-R*.1,R*.05,C,C,R);g.addColorStop(0,"rgba(238,218,158,1)");
+  g.addColorStop(.28,"#8A7439");g.addColorStop(.62,"#2E2717");g.addColorStop(1,"#0B0906");
+  ctx.beginPath();ctx.arc(C,C,R*(1+br*.006),0,6.2832);ctx.fillStyle=g;ctx.fill();
+  ctx.beginPath();ctx.arc(C,C,R,0,6.2832);ctx.strokeStyle="rgba(8,7,5,.85)";ctx.lineWidth=2*D;ctx.stroke();
+  g=ctx.createRadialGradient(C,C,0,C,C,R*.55);g.addColorStop(0,"rgba(250,236,190,.7)");g.addColorStop(1,"rgba(250,236,190,0)");
+  ctx.beginPath();ctx.arc(C,C,R*.55,0,6.2832);ctx.fillStyle=g;ctx.fill();
   ctx.globalCompositeOperation="lighter";
   for(var b=0;b<B.length;b++){var cn=B[b][0],ba=B[b][1],am=B[b][2],sd=B[b][3],al=B[b][4],wd=B[b][5];
    for(var i=0;i<cn;i++){var ph=i*2.399+t*sd*(i%2?1:-1);var a2=Math.min(1,al*(.5+.5*Math.sin(i*1.7+t*.6))*(.45+E*.9));
@@ -1031,12 +1037,6 @@ function orb(cv,px){var ctx=cv.getContext("2d"),D=Math.min(devicePixelRatio||1,2
    ctx.beginPath();ctx.arc(C+Math.cos(s2.a)*sr,C+Math.sin(s2.a)*sr,(1+s2.z*1.6+E*1.2)*D*.8,0,6.2832);
    ctx.fillStyle="rgba(244,230,180,"+Math.min(1,.25+.5*s2.z*E).toFixed(3)+")";ctx.shadowColor="rgba(244,230,180,.9)";ctx.shadowBlur=8*D*E;ctx.fill();}
   ctx.globalCompositeOperation="source-over";ctx.shadowBlur=0;
-  g=ctx.createRadialGradient(C-R*.18,C-R*.1,R*.05,C,C,R);g.addColorStop(0,"rgba(238,218,158,1)");
-  g.addColorStop(.28,"#8A7439");g.addColorStop(.62,"#2E2717");g.addColorStop(1,"#0B0906");
-  ctx.beginPath();ctx.arc(C,C,R*(1+br*.006),0,6.2832);ctx.fillStyle=g;ctx.fill();
-  ctx.beginPath();ctx.arc(C,C,R,0,6.2832);ctx.strokeStyle="rgba(8,7,5,.85)";ctx.lineWidth=2*D;ctx.stroke();
-  g=ctx.createRadialGradient(C,C,0,C,C,R*.55);g.addColorStop(0,"rgba(250,236,190,.7)");g.addColorStop(1,"rgba(250,236,190,0)");
-  ctx.beginPath();ctx.arc(C,C,R*.55,0,6.2832);ctx.fillStyle=g;ctx.fill();
   requestAnimationFrame(draw);}
  draw();}
 function boot(){
