@@ -631,6 +631,51 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
   </div>
 </section>
 
+<div class="bridge b-d2w" aria-hidden="true"></div>
+
+<!-- WATCH CLARK WORK (in the field) -->
+<section class="flow" id="in-the-field">
+  <div class="wrap">
+    <div class="shead reveal" style="text-align:center;max-width:none">
+      <span class="eyebrow">CLARK AI &middot; In the field</span>
+      <h2 style="margin:12px auto 0;max-width:18ch">Watch CLARK work.</h2>
+      <p class="lede" style="margin:18px auto 0;max-width:52ch">Say it once. CLARK writes the report, measures the problem, files it with your city, and stays on it until it&rsquo;s closed.</p>
+    </div>
+    <div class="vfgrid">
+      <figure class="vfcard reveal">
+        <div class="vfmedia"><video src="clark_field_human.mp4" poster="clark_field_human_poster.jpg" muted loop playsinline preload="none" aria-label="CLARK AI film: a resident sees a pothole and reports it by voice"></video></div>
+        <figcaption class="vfcap"><span class="vfbadge">Public</span><span class="vftitle">Human report</span><span class="vfsub">Anyone. Any phone. Free.</span></figcaption>
+      </figure>
+      <figure class="vfcard reveal">
+        <div class="vfmedia"><video src="clark_field_scooter.mp4" poster="clark_field_scooter_poster.jpg" muted loop playsinline preload="none" aria-label="CLARK AI film: a mounted sensor captures street conditions automatically"></video></div>
+        <figcaption class="vfcap"><span class="vfbadge">Private</span><span class="vftitle">Auto capture</span><span class="vfsub">Mounted on fleets. Always scanning.</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<style>
+.vfgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,34px);margin-top:clamp(40px,5vw,60px)}
+.vfcard{margin:0;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(23,20,14,.10)}
+.vfmedia{aspect-ratio:16/9;background:#0b0b0d}
+.vfmedia video{display:block;width:100%;height:100%;object-fit:cover}
+.vfcap{display:flex;align-items:baseline;gap:14px;padding:16px 22px;flex-wrap:wrap}
+.vfbadge{font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-text);border:1px solid var(--line);border-radius:999px;padding:4px 12px;white-space:nowrap}
+.vftitle{font-family:'Fraunces';font-weight:500;font-size:1.2rem;color:var(--ink)}
+.vfsub{color:var(--muted);font-size:.9rem;margin-left:auto}
+@media(max-width:900px){.vfgrid{grid-template-columns:1fr}.vfsub{margin-left:0;flex-basis:100%}}
+</style>
+<script>
+(function(){var vs=document.querySelectorAll('.vfmedia video');
+function playAll(){vs.forEach(function(v){v.play().catch(function(){});});}
+if(!('IntersectionObserver' in window)){playAll();return;}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
+if(e.isIntersecting){v.play().catch(function(){});}else{v.pause();}});},{threshold:0.25});
+vs.forEach(function(v){io.observe(v);});})();
+</script>
+
+<div class="bridge b-w2d" aria-hidden="true"></div>
+
+
 
 <!-- DEPTH: a guess, or a measurement (restored from v31) -->
 <section id="depth" class="night">
@@ -682,50 +727,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
   </div></div>
 </section>
 
-<div class="bridge b-d2w" aria-hidden="true"></div>
 
-<!-- WATCH CLARK WORK (in the field) -->
-<section class="flow" id="in-the-field">
-  <div class="wrap">
-    <div class="shead reveal" style="text-align:center;max-width:none">
-      <span class="eyebrow">CLARK AI &middot; In the field</span>
-      <h2 style="margin:12px auto 0;max-width:18ch">Watch CLARK work.</h2>
-      <p class="lede" style="margin:18px auto 0;max-width:52ch">Say it once. CLARK writes the report, measures the problem, files it with your city, and stays on it until it&rsquo;s closed.</p>
-    </div>
-    <div class="vfgrid">
-      <figure class="vfcard reveal">
-        <div class="vfmedia"><video src="clark_field_human.mp4" poster="clark_field_human_poster.jpg" muted loop playsinline preload="none" aria-label="CLARK AI film: a resident sees a pothole and reports it by voice"></video></div>
-        <figcaption class="vfcap"><span class="vfbadge">Public</span><span class="vftitle">Human report</span><span class="vfsub">Anyone. Any phone. Free.</span></figcaption>
-      </figure>
-      <figure class="vfcard reveal">
-        <div class="vfmedia"><video src="clark_field_scooter.mp4" poster="clark_field_scooter_poster.jpg" muted loop playsinline preload="none" aria-label="CLARK AI film: a mounted sensor captures street conditions automatically"></video></div>
-        <figcaption class="vfcap"><span class="vfbadge">Private</span><span class="vftitle">Auto capture</span><span class="vfsub">Mounted on fleets. Always scanning.</span></figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-<style>
-.vfgrid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,34px);margin-top:clamp(40px,5vw,60px)}
-.vfcard{margin:0;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(23,20,14,.10)}
-.vfmedia{aspect-ratio:16/9;background:#0b0b0d}
-.vfmedia video{display:block;width:100%;height:100%;object-fit:cover}
-.vfcap{display:flex;align-items:baseline;gap:14px;padding:16px 22px;flex-wrap:wrap}
-.vfbadge{font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-text);border:1px solid var(--line);border-radius:999px;padding:4px 12px;white-space:nowrap}
-.vftitle{font-family:'Fraunces';font-weight:500;font-size:1.2rem;color:var(--ink)}
-.vfsub{color:var(--muted);font-size:.9rem;margin-left:auto}
-@media(max-width:900px){.vfgrid{grid-template-columns:1fr}.vfsub{margin-left:0;flex-basis:100%}}
-</style>
-<script>
-(function(){var vs=document.querySelectorAll('.vfmedia video');
-function playAll(){vs.forEach(function(v){v.play().catch(function(){});});}
-if(!('IntersectionObserver' in window)){playAll();return;}
-var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
-if(e.isIntersecting){v.play().catch(function(){});}else{v.pause();}});},{threshold:0.25});
-vs.forEach(function(v){io.observe(v);});})();
-</script>
 <style>.flow{background:var(--paper);color:var(--ink);padding:clamp(70px,9vw,120px) 0}.flow h2{color:var(--ink)}.flow .lede{color:var(--muted)}.flowgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,34px);margin-top:clamp(40px,5vw,60px)}.fstep{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:clamp(22px,3vw,34px)}.fstep .fnum{font-family:'IBM Plex Mono';font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-text)}.fstep h3{font-family:'Fraunces';font-weight:500;font-size:1.35rem;margin:12px 0 8px;color:var(--ink)}.fstep p{color:var(--muted);font-size:.98rem;line-height:1.6}@media(max-width:860px){.flowgrid{grid-template-columns:1fr}}</style>
 
-<div class="bridge b-w2d" aria-hidden="true"></div>
+
 
 <!-- STREETSCOPE SHOWCASE -->
 <style>
