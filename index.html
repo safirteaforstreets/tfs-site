@@ -708,47 +708,6 @@ vs.forEach(function(v){io.observe(v);});})();
 
 
 <!-- PINNED: the engine comes to life -->
-<style>
-#articles .fhead{max-width:640px;margin:0 0 clamp(30px,4vw,46px)}
-#articles .fhead .eyebrow{display:block;margin-bottom:14px}
-#articles .fhead h2{font-size:clamp(1.9rem,3.4vw,2.6rem)}
-#articles .fhead p{margin-top:14px;color:var(--nmuted);font-size:1rem;line-height:1.6;max-width:56ch}
-#articles .fgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-@media(max-width:720px){#articles .fgrid{grid-template-columns:1fr}}
-#articles .fcard{background:var(--ncard);border:1px solid var(--nline);border-radius:18px;padding:28px;text-decoration:none;display:flex;flex-direction:column;gap:14px;min-height:220px;transition:transform .3s cubic-bezier(.16,1,.3,1),border-color .3s ease,box-shadow .3s ease}
-#articles .fcard:hover{transform:translateY(-3px);border-color:var(--ngold);box-shadow:0 14px 30px rgba(0,0,0,.35)}
-#articles .fcard .fk{font-family:'IBM Plex Mono';font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ngold)}
-#articles .fcard .ft{font-family:'Fraunces';font-weight:300;font-size:1.24rem;line-height:1.32;color:var(--ntext)}
-#articles .fcard .fd{font-size:.88rem;color:var(--nmuted);line-height:1.55;flex:1}
-#articles .fcard .fm{margin-top:auto;font-family:'IBM Plex Mono';font-size:.62rem;letter-spacing:.08em;color:var(--nmuted);display:flex;justify-content:space-between;align-items:center}
-#articles .fcard.soon{border-style:dashed;background:transparent}
-#articles .fcard.soon .ft{color:var(--nmuted);font-style:italic}
-#articles .fmore{margin-top:28px;display:inline-flex;align-items:center;gap:.4em}
-</style>
-<section id="articles" class="night">
-  <div class="wrap">
-    <div class="fhead reveal">
-      <span class="eyebrow">Articles</span>
-      <h2>From the field.</h2>
-      <p>Plain answers about street conditions, Business Improvement Districts, and the technology behind CLARK AI, written by the people who file the reports.</p>
-    </div>
-    <div class="fgrid">
-      <a class="fcard reveal" href="/articles/what-is-a-business-improvement-district-los-angeles">
-        <div class="fk">BIDs &amp; Public Realm</div>
-        <div class="ft">What is a Business Improvement District, and why do LA's 43 BIDs care about street conditions?</div>
-        <div class="fd">A BID is an area where owners assess themselves to fund clean-and-safe crews. LA has 43, collecting about $65M a year, and each must show owners what they got.</div>
-        <div class="fm"><span>Safir Wazed</span><span>6 min read</span></div>
-      </a>
-      <div class="fcard soon">
-        <div class="fk">Field notes</div>
-        <div class="ft">Coming soon</div>
-        <div class="fd">A second field report is in review and will publish shortly.</div>
-        <div class="fm"><span>&nbsp;</span><span>&nbsp;</span></div>
-      </div>
-    </div>
-    <a class="lnk fmore" href="/articles">See all articles &rarr;</a>
-  </div>
-</section>
 
 
 <style>.flow{background:var(--paper);color:var(--ink);padding:clamp(70px,9vw,120px) 0}.flow h2{color:var(--ink)}.flow .lede{color:var(--muted)}.flowgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,34px);margin-top:clamp(40px,5vw,60px)}.fstep{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:clamp(22px,3vw,34px)}.fstep .fnum{font-family:'IBM Plex Mono';font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-text)}.fstep h3{font-family:'Fraunces';font-weight:500;font-size:1.35rem;margin:12px 0 8px;color:var(--ink)}.fstep p{color:var(--muted);font-size:.98rem;line-height:1.6}@media(max-width:860px){.flowgrid{grid-template-columns:1fr}}</style>
