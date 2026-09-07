@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://teaforstreets.app/sitemap.xml
+Sitemap: https://teaforstreets.com/sitemap.xml
