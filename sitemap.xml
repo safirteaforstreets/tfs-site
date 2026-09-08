@@ -58,4 +58,11 @@
     <priority>0.8</priority>
     <image:image><image:loc>https://teaforstreets.com/articles/why-did-tea-for-streets-launch-clark-ai-in-los-angeles-first/la_og.jpg</image:loc></image:image>
   </url>
+  <url>
+    <loc>https://teaforstreets.com/articles/data-centers-are-moving-to-small-towns-what-happens-to-their-streets/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image><image:loc>https://teaforstreets.com/articles/data-centers-are-moving-to-small-towns-what-happens-to-their-streets/datacenters_og.jpg</image:loc></image:image>
+  </url>
 </urlset>
