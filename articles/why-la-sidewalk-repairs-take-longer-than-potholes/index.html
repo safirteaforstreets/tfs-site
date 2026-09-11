@@ -627,13 +627,21 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
   .v2 details.q summary h3{font-size:1.08rem}
   .v2 details.q .a{font-size:.98rem;max-width:640px;font-weight:300;color:var(--ink);opacity:.82}
 
-  .v2 .nextup{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center;margin:56px 0 0;padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--card);text-decoration:none;color:var(--ink);transition:border-color .3s}
-  .v2 .nextup:hover{border-color:var(--gold)}
-  .v2 .nextup img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:12px;display:block}
-  .v2 .nextup .k{font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-text);margin-bottom:8px}
-  .v2 .nextup h3{font-family:'Fraunces';font-weight:300;font-size:1.35rem;line-height:1.25;margin:0 0 8px;letter-spacing:-.01em}
-  .v2 .nextup p{margin:0;font-size:.86rem;color:var(--muted)}
 
+  .v2 .related{width:min(1032px,calc(100vw - 48px));margin:64px 0 0 calc(50% - min(1032px,calc(100vw - 48px))/2);padding-top:40px;border-top:1px solid var(--line)}
+  .v2 .rel-head{margin-bottom:26px}
+  .v2 .rel-head .k{display:block;font-family:'IBM Plex Mono';font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-text);margin-bottom:10px}
+  .v2 .rel-head h2{font-family:'Fraunces';font-weight:300;font-size:1.78rem;letter-spacing:-.015em;margin:0;color:var(--ink)}
+  .v2 .rel-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+  .v2 .rel-card{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);min-width:0}
+  .v2 .rel-media{aspect-ratio:16/10;overflow:hidden;border-radius:14px;background:#e9e4d8}
+  .v2 .rel-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s cubic-bezier(.16,1,.3,1)}
+  .v2 .rel-card:hover .rel-media img{transform:scale(1.04)}
+  .v2 .rel-card:hover h3{color:var(--gold-text)}
+  .v2 .rel-k{font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-text);margin-top:4px}
+  .v2 .rel-card h3{font-family:'Fraunces';font-weight:300;font-size:1.22rem;line-height:1.22;letter-spacing:-.012em;margin:0;text-wrap:balance}
+  .v2 .rel-m{font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  @media(max-width:720px){.v2 .rel-grid{grid-template-columns:1fr;gap:26px}.v2 .related{margin-top:48px}}
   .v2 .sources{margin:48px 0 72px;padding-top:26px}
   .v2 .sources ol{columns:2;column-gap:36px;padding-left:1.2em}
   .v2 .sources li{break-inside:avoid}
@@ -657,7 +665,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
     .v2 .cmp{grid-template-columns:1fr}
     .v2 .tea .trow{grid-template-columns:1fr 1fr 1fr;gap:10px}
     .v2 .tea .trow b{font-size:1.5rem}
-    .v2 .nextup{grid-template-columns:1fr}
     .v2 .sources ol{columns:1}
     .v2 .who .d{margin-left:0;width:100%}
   }
@@ -822,10 +829,29 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold-text);outline-
     </details>
   </section></div>
 
-  <a class="nextup" href="/articles/how-much-311-call-volume-can-a-city-deflect/">
-    <img src="/articles/how-much-311-call-volume-can-a-city-deflect/deflection_og.jpg" alt="" loading="lazy">
-    <div><div class="k">Next up</div><h3>How much 311 call volume can a city actually deflect?</h3><p>By Aaron Henehan &middot; 8 min read</p></div>
-  </a>
+  <section class="related" aria-label="Related articles">
+    <div class="rel-head"><span class="k">Keep reading</span><h2>Related articles</h2></div>
+    <div class="rel-grid">
+      <a class="rel-card" href="/articles/what-does-closed-see-comments-mean-on-a-myla311-request/">
+        <div class="rel-media"><img src="/articles/what-does-closed-see-comments-mean-on-a-myla311-request/closed_og.jpg" alt="A hand holding a phone that reads Closed, See Comments beside an unrepaired pothole on a Los Angeles street" loading="lazy" decoding="async"></div>
+        <span class="rel-k">How 311 works</span>
+        <h3>What does "Closed - See Comments" mean on a MyLA311 request?</h3>
+        <span class="rel-m">6 min read</span>
+      </a>
+      <a class="rel-card" href="/articles/how-much-311-call-volume-can-a-city-deflect/">
+        <div class="rel-media"><img src="/articles/how-much-311-call-volume-can-a-city-deflect/deflection_og.jpg" alt="A resident on a Los Angeles corner holding a phone that reads Right Agency Found, beside a couch dumped on the sidewalk" loading="lazy" decoding="async"></div>
+        <span class="rel-k">How 311 works</span>
+        <h3>How much 311 call volume can a city actually deflect?</h3>
+        <span class="rel-m">8 min read</span>
+      </a>
+      <a class="rel-card" href="/articles/how-to-report-a-pothole-in-los-angeles-with-clark-ai/">
+        <div class="rel-media"><img src="/articles/how-to-report-a-pothole-in-los-angeles-with-clark-ai/pothole_og.jpg" alt="A resident photographing a pothole on a residential Los Angeles street" loading="lazy" decoding="async"></div>
+        <span class="rel-k">Using CLARK AI</span>
+        <h3>How to report a pothole in the City of Los Angeles with CLARK AI</h3>
+        <span class="rel-m">5 min read</span>
+      </a>
+    </div>
+  </section>
 
   <div class="app-cta">
     <div class="app-cta-text">
