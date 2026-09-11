@@ -79,4 +79,11 @@
     <priority>0.8</priority>
     <image:image><image:loc>https://teaforstreets.com/articles/how-much-311-call-volume-can-a-city-deflect/deflection_og.jpg</image:loc></image:image>
   </url>
+  <url>
+    <loc>https://teaforstreets.com/articles/why-la-sidewalk-repairs-take-longer-than-potholes/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image><image:loc>https://teaforstreets.com/articles/why-la-sidewalk-repairs-take-longer-than-potholes/sidewalk_og.jpg</image:loc></image:image>
+  </url>
 </urlset>
