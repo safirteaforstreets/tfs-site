@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://teaforstreets.com/articles/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -85,5 +85,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image><image:loc>https://teaforstreets.com/articles/why-la-sidewalk-repairs-take-longer-than-potholes/sidewalk_og.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://teaforstreets.com/articles/do-cities-need-lidar-to-know-what-is-wrong-with-their-streets/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image><image:loc>https://teaforstreets.com/articles/do-cities-need-lidar-to-know-what-is-wrong-with-their-streets/lidar_og.jpg</image:loc></image:image>
   </url>
 </urlset>
