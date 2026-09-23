@@ -72,6 +72,7 @@ nav.links a:hover,nav.links a[aria-current]{color:var(--gold-text)}
 
 /* section heads: big title left, quiet label right */
 .sec{padding:clamp(34px,5vw,64px) 0 0}
+.sec-cf{padding-top:clamp(6px,1.5vw,18px)}
 .shead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:clamp(6px,1.6vw,14px)}
 .shead h2{font-size:clamp(2.1rem,5.2vw,3.5rem);letter-spacing:-.025em}
 .shead .sub{font-size:.95rem;color:var(--muted2);white-space:nowrap;font-weight:300}
@@ -192,8 +193,7 @@ footer .tl{color:#e6c589;font-family:'IBM Plex Mono',monospace;font-size:.64rem;
   </div>
 </section>
 
-<section class="sec ax-in d1" aria-labelledby="latestH">
-  <div class="wrap shead"><h2 id="latestH">The latest</h2></div>
+<section class="sec sec-cf ax-in d1" aria-label="Latest articles">
   <div class="cf" id="cf">
     <button class="cf-arrow prev" type="button" id="cfPrev" aria-label="Previous article"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <div class="cf-track" id="cfTrack" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Latest articles">
