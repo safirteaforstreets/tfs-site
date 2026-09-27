@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://teaforstreets.com/articles/</loc>
-    <lastmod>2026-09-16</lastmod>
+    <lastmod>2026-09-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -99,5 +99,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image><image:loc>https://teaforstreets.com/articles/why-should-cities-track-outcomes-instead-of-counting-submissions/p11_og.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://teaforstreets.com/articles/are-los-angeles-streets-ready-for-la28/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image><image:loc>https://teaforstreets.com/articles/are-los-angeles-streets-ready-for-la28/la28_og.jpg</image:loc></image:image>
   </url>
 </urlset>
