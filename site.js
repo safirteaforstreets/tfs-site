@@ -320,16 +320,17 @@
   var PAL=[[42,35,80],[47,95,168],[31,158,138],[111,191,74],[232,226,75]];
   function col(e){ e=e<0?0:e>1?1:e; var s=e*4,i=s|0,t=s-i,a=PAL[i],b=PAL[i<4?i+1:4]; return 'rgb('+((a[0]+(b[0]-a[0])*t)|0)+','+((a[1]+(b[1]-a[1])*t)|0)+','+((a[2]+(b[2]-a[2])*t)|0)+')'; }
   var W=0,H=0,DPR=1,pts=[],raf=0,run=false,last=0,mx=-9999,my=-9999,tpx=0,tpy=0,pmx=0,pmy=0,REP=95,REPF=30;
-  function size(){ DPR=Math.min(window.devicePixelRatio||1,2); W=c.clientWidth; H=c.clientHeight; c.width=Math.max(1,W*DPR); c.height=Math.max(1,H*DPR); ctx.setTransform(DPR,0,0,DPR,0,0); }
+  function size(){ DPR=Math.min(window.devicePixelRatio||1,3); W=c.clientWidth; H=c.clientHeight; if(!W||!H||W*H>16777216){ c.width=c.height=1; return; } c.width=Math.max(1,Math.round(W*DPR)); c.height=Math.max(1,Math.round(H*DPR)); ctx.setTransform(DPR,0,0,DPR,0,0); }
+  function target(){ return Math.max(450,Math.min(1700,(W*H/820)|0)); }
   function build(){ var n=Math.max(450,Math.min(1700,(W*H/820)|0)); pts=[]; for(var i=0;i<n;i++){ var x,y,e; if(i<n*0.72){ var yy=Math.pow(Math.random(),0.7); y=0.42+yy*0.56; e=(0.98-y)/0.56+(Math.random()-0.5)*0.1; } else { var tt=Math.random(); y=0.40-tt*0.22+(Math.random()-0.5)*0.05; e=0.62+tt*0.4; } x=-0.03+Math.random()*1.06; pts.push({x:x,y:y,e:e<0?0:e>1?1:e,ph:Math.random()*6.283,sp:0.3+Math.random()*0.8,dx:0,dy:0}); } }
-  function frame(ts){ var dt=Math.min(50,ts-last); last=ts; ctx.clearRect(0,0,W,H); pmx+=(tpx-pmx)*0.06; pmy+=(tpy-pmy)*0.06;
+  function frame(ts){ var dt=Math.min(50,ts-last); last=ts; ctx.setTransform(DPR,0,0,DPR,0,0); ctx.clearRect(0,0,W,H); pmx+=(tpx-pmx)*0.06; pmy+=(tpy-pmy)*0.06;
     for(var k=0;k<pts.length;k++){ var p=pts[k];
       if(!reduce){ p.x+=0.000016*dt*p.sp; if(p.x>1.03) p.x-=1.06; p.ph+=0.0016*dt; }
       var bx=p.x*W+pmx*(8+p.e*18), by=(p.y+(reduce?0:0.003*Math.sin(p.ph)))*H+pmy*(6+p.e*14);
       if(!reduce){ var ax=bx-mx, ay=by-my, d2=ax*ax+ay*ay, tx=0, ty=0; if(d2<REP*REP){ var dd=Math.sqrt(d2)||1, f=(1-dd/REP)*REPF; tx=ax/dd*f; ty=ay/dd*f; } p.dx+=(tx-p.dx)*0.16; p.dy+=(ty-p.dy)*0.16; }
       var tw=reduce?1:0.6+0.4*Math.sin(p.ph);
       ctx.globalAlpha=(0.3+0.55*p.e)*tw; ctx.fillStyle=col(p.e); var r=p.e<0.6?1:1.7;
-      ctx.fillRect(bx+p.dx,by+p.dy,r,r);
+      ctx.fillRect(Math.round((bx+p.dx)*DPR)/DPR,Math.round((by+p.dy)*DPR)/DPR,Math.max(1,Math.round(r*DPR))/DPR,Math.max(1,Math.round(r*DPR))/DPR);
     }
     ctx.globalAlpha=1; if(!reduce&&run) raf=requestAnimationFrame(frame);
   }
@@ -337,7 +338,12 @@
   function stop(){ run=false; cancelAnimationFrame(raf); }
   size(); build(); start();
   if(!reduce&&hero){ hero.addEventListener('pointermove',function(ev){ var r=c.getBoundingClientRect(); mx=ev.clientX-r.left; my=ev.clientY-r.top; tpx=(mx/W-0.5)*2; tpy=(my/H-0.5)*2; },{passive:true}); hero.addEventListener('pointerleave',function(){ mx=my=-9999; tpx=tpy=0; }); }
-  var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(function(){ if(!c.clientWidth) return; stop(); size(); build(); start(); },120); },{passive:true});
+  /* the canvas bitmap must match its CSS box: re-measure when the box changes (stylesheet arriving late, phone toolbars, rotation) */
+  function refit(rebuild){ if(!c.clientWidth) return; var was=run; stop(); size(); if(rebuild||Math.abs(target()-pts.length)>pts.length*0.25) build(); if(was||!reduce) start(); else frame(performance.now()); }
+  var rt; window.addEventListener('resize',function(){ clearTimeout(rt); rt=setTimeout(function(){ refit(true); },120); },{passive:true});
+  if(window.ResizeObserver){ var lastW=0,lastH=0; new ResizeObserver(function(){ var w=c.clientWidth,h=c.clientHeight; if(w===lastW&&h===lastH) return; lastW=w; lastH=h; if(Math.round(w*DPR)!==c.width||Math.round(h*DPR)!==c.height) refit(false); }).observe(c); }
+  window.addEventListener('load',function(){ if(Math.round(c.clientWidth*DPR)!==c.width||Math.round(c.clientHeight*DPR)!==c.height) refit(false); });
+  c.addEventListener('contextrestored',function(){ refit(false); });
   if(window.IntersectionObserver&&hero){ new IntersectionObserver(function(es){ es.forEach(function(e){ e.isIntersecting?start():stop(); }); },{threshold:0}).observe(hero); }
 })();
 /* live-site capture compare (photo + LiDAR), ported as is */
@@ -392,6 +398,7 @@ function loop(now){if(auto){const k=(now-t0)/1000;handle=58-18*Math.sin(Math.min
 function startLoop(){if(!raf)raf=requestAnimationFrame(loop);}
 function stopLoop(){if(raf){cancelAnimationFrame(raf);raf=0;}}
 resize();apply();let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{resize();apply();},180);},{passive:true});
+if(window.ResizeObserver){let lw=0,lh=0;new ResizeObserver(()=>{const r=frame.getBoundingClientRect();if(Math.round(r.width)===lw&&Math.round(r.height)===lh)return;lw=Math.round(r.width);lh=Math.round(r.height);resize();apply();}).observe(frame);}
 function onView(v){if(v){if(!started){started=true;setTimeout(showBoxes,reduce?0:500);if(!reduce){auto=true;t0=performance.now();}}if(reduce)drawLidar(performance.now());else startLoop();}else stopLoop();}
 if(window.IntersectionObserver){new IntersectionObserver(es=>es.forEach(e=>onView(e.isIntersecting)),{threshold:0.25}).observe(frame);}else onView(true);
 })();
