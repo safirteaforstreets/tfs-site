@@ -101,7 +101,7 @@
   <div class="rc-copy">
     <span class="kicker">Hardware in Development &middot; Coming Early 2027</span>
     <h1>The same sensor.<br>Now it <em>rolls.</em></h1>
-    <p class="lede">Robo-CLARK doesn&rsquo;t just talk the talk, he walks the walk, and fixes the streets while we sleep.</p>
+    <p class="lede">Robo-CLARK walks the walk, and fills the potholes while you sleep.</p>
     <form class="rc-form" id="rcForm" novalidate>
       <input type="email" id="rcEmail" name="email" autocomplete="email" placeholder="Work email" aria-label="Email" required>
       <button class="btn btn-gold" id="rcGo" type="submit">Tell me when it rolls</button>
@@ -116,7 +116,7 @@
   <div class="wrap">
     <span class="kicker">Our commitment</span>
     <h2>Designed in California.<br>Built for the USA.</h2>
-    <p>A robot that reads American streets should be made on them.</p>
+    <p>Nobody wants the night shift. CLARK was engineered from the ground up to own it.</p>
     <div class="rc-status">
       <div><b>In development</b><span>Current stage</span></div>
       <div><b>Marina del Rey</b><span>Designed and assembled</span></div>
@@ -199,7 +199,7 @@
     fetch('https://formsubmit.co/ajax/support@teaforstreets.app',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'Robo CLARK waitlist: '+v,email:v,list:'Robo CLARK',page:location.href})})
       .then(function(r){ if(!r.ok) throw new Error('bad'); return r.json(); })
       .then(function(){ f.hidden=true; m.textContent='You are on the list. One email, when it rolls.'; try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:'/roboclark/waitlist',event:true}); }catch(x){} })
-      .catch(function(){ b.disabled=false; m.textContent='That did not go through. Email support@teaforstreets.app and we will add you.'; });
+      .catch(function(){ b.disabled=false; m.textContent='Our form service is down. Opening an email to support@teaforstreets.app instead.'; location.href='mailto:support@teaforstreets.app?subject='+encodeURIComponent('Robo CLARK waitlist: '+v)+'&body='+encodeURIComponent('Please add '+v+' to the Robo CLARK list.'); });
   });
 })();
 </script>
