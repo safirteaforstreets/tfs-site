@@ -103,7 +103,7 @@
     <h1>The same sensor.<br>Now it <em>rolls.</em></h1>
     <p class="lede">Robo-CLARK walks the walk, and fills the potholes while you sleep.</p>
     <form class="rc-form" id="rcForm" novalidate>
-      <input type="email" id="rcEmail" name="email" autocomplete="email" placeholder="Work email" aria-label="Email" required>
+      <input type="email" id="rcEmail" name="email" autocomplete="email" placeholder="Your launch email" aria-label="Your launch email" required>
       <button class="btn btn-gold" id="rcGo" type="submit">Tell me when it rolls</button>
       <input class="rc-hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
     </form>
@@ -193,7 +193,7 @@
   f.addEventListener('submit', function(ev){
     ev.preventDefault();
     var v=(e.value||'').trim();
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){ m.textContent='Enter a work email and we will write once, when it rolls.'; e.focus(); return; }
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){ m.textContent='Enter your email and we will write once, when it rolls.'; e.focus(); return; }
     if(f.querySelector('.rc-hp').value) return;
     b.disabled=true; m.textContent='One second.';
     fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:'4365678d-dc9b-4f12-9aca-61090053d963',subject:'Robo CLARK waitlist: '+v,from_name:'Robo CLARK waitlist',email:v,list:'Robo CLARK',page:location.href,botcheck:f.querySelector('.rc-hp').value})})
