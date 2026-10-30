@@ -196,10 +196,10 @@
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){ m.textContent='Enter a work email and we will write once, when it rolls.'; e.focus(); return; }
     if(f.querySelector('.rc-hp').value) return;
     b.disabled=true; m.textContent='One second.';
-    fetch('https://formsubmit.co/ajax/support@teaforstreets.app',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'Robo CLARK waitlist: '+v,email:v,list:'Robo CLARK',page:location.href})})
-      .then(function(r){ if(!r.ok) throw new Error('bad'); return r.json(); })
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:'4365678d-dc9b-4f12-9aca-61090053d963',subject:'Robo CLARK waitlist: '+v,from_name:'Robo CLARK waitlist',email:v,list:'Robo CLARK',page:location.href,botcheck:f.querySelector('.rc-hp').value})})
+      .then(function(r){ return r.json().then(function(j){ if(!r.ok||!j.success) throw new Error('bad'); return j; }); })
       .then(function(){ f.hidden=true; m.textContent='You are on the list. One email, when it rolls.'; try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:'/roboclark/waitlist',event:true}); }catch(x){} })
-      .catch(function(){ b.disabled=false; m.textContent='Our form service is down. Opening an email to support@teaforstreets.app instead.'; location.href='mailto:support@teaforstreets.app?subject='+encodeURIComponent('Robo CLARK waitlist: '+v)+'&body='+encodeURIComponent('Please add '+v+' to the Robo CLARK list.'); });
+      .catch(function(){ b.disabled=false; m.textContent='Our form service hiccupped. Opening an email to support@teaforstreets.app instead.'; location.href='mailto:support@teaforstreets.app?subject='+encodeURIComponent('Robo CLARK waitlist: '+v)+'&body='+encodeURIComponent('Please add '+v+' to the Robo CLARK list.'); });
   });
 })();
 </script>
