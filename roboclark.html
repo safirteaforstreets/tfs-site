@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Robo CLARK: Early 2027 | Tea For Streets</title>
-<meta name="description" content="Robo CLARK is the CLARK sensor on wheels. Hardware in development, designed in California and built for the USA. early 2027.">
+<meta name="description" content="Robo CLARK is the CLARK sensor on wheels. Hardware in development, designed in California and built for the USA. Live R&amp;D status, first streets early 2027.">
 <meta name="theme-color" content="#08080a">
 <link rel="canonical" href="https://teaforstreets.com/roboclark">
 <meta name="robots" content="index, follow">
@@ -34,11 +34,6 @@
 .rc-copy h1{font-family:'Fraunces';font-weight:400;font-size:clamp(2.6rem,6.2vw,5.2rem);line-height:.98;letter-spacing:-.02em;margin:16px 0 20px;color:#fff}
 .rc-copy h1 em{font-style:italic;color:#e6c589}
 .rc-copy .lede{color:rgba(255,255,255,.78);font-size:clamp(1rem,1.3vw,1.15rem);line-height:1.6;max-width:42ch;margin:0 0 30px}
-.rc-form{display:flex;gap:10px;max-width:460px;flex-wrap:wrap}
-.rc-form input[type=email]{flex:1;min-width:200px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:14px 18px;color:#fff;font:inherit;font-size:.95rem}
-.rc-form input::placeholder{color:rgba(255,255,255,.4)}
-.rc-hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
-.rc-msg{min-height:1.4em;margin:12px 0 0;color:#e6c589;font-size:.95rem}
 .rc-copy .fine{font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:16px}
 .rc-made{background:#08080a;color:#fff;border-top:1px solid rgba(255,255,255,.08);padding:clamp(56px,8vw,110px) 0 clamp(30px,4vw,50px)}
 .rc-made .kicker{color:#e6c589}
@@ -48,6 +43,47 @@
 .rc-status b{display:block;font-family:'Fraunces';font-weight:400;font-size:1.5rem;color:#fff}
 .rc-status span{font-family:'IBM Plex Mono';font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55)}
 @media (max-width:760px){.rc-stage{align-items:end;min-height:80svh}.rc-stage img{object-position:35% 30%;opacity:.8}.rc-copy{margin:0}}
+.rc-mini{max-width:460px;margin:4px 0 0}
+.rc-mini-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-family:'IBM Plex Mono';font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.rc-mini-top b{color:#e6c589;font-weight:500}
+.rc-mini-bar{position:relative;height:3px;margin:12px 0 14px;background:rgba(255,255,255,.12);border-radius:3px;overflow:visible}
+.rc-mini-bar i{position:absolute;left:0;top:0;bottom:0;border-radius:3px;background:linear-gradient(90deg,#b8923f,#e6c589)}
+.rc-mini-bar em{position:absolute;top:50%;width:9px;height:9px;border-radius:50%;background:#e6c589;transform:translate(-50%,-50%);box-shadow:0 0 0 4px rgba(230,197,137,.18)}
+.rc-mini-now{font-size:1rem;color:#fff;line-height:1.4}
+.rc-mini-now small{display:block;color:rgba(255,255,255,.6);font-size:.86rem}
+.rc-mini .btn{margin-top:18px}
+.rc-prog{background:#08080a;color:#fff;border-top:1px solid rgba(255,255,255,.08);padding:clamp(56px,8vw,110px) 0 clamp(40px,6vw,80px)}
+.rc-prog .kicker{color:#e6c589}
+.rc-prog h2{font-family:'Fraunces';font-weight:400;font-size:clamp(2rem,4.6vw,3.6rem);line-height:1.02;letter-spacing:-.02em;margin:14px 0 14px;color:#fff}
+.rc-prog .sub{color:rgba(255,255,255,.7);max-width:56ch;line-height:1.65;margin:0}
+.rc-prog-head{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;margin-bottom:clamp(32px,4vw,56px)}
+.rc-big{text-align:right}
+.rc-big b{display:block;font-family:'Fraunces';font-weight:300;font-size:clamp(3.4rem,7vw,6rem);line-height:.9;letter-spacing:-.03em;color:#e6c589}
+.rc-big span{display:block;font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:10px}
+.rc-rail{position:relative;display:grid;grid-template-columns:repeat(8,1fr);gap:0;margin-top:8px}
+.rc-rail:before{content:"";position:absolute;left:calc(100%/16);right:calc(100%/16);top:11px;height:1px;background:rgba(255,255,255,.14)}
+.rc-rail .fill{position:absolute;left:calc(100%/16);top:11px;height:1px;background:linear-gradient(90deg,#b8923f,#e6c589)}
+.rc-step{position:relative;padding:0 8px;text-align:center}
+.rc-dot{position:relative;z-index:1;width:22px;height:22px;margin:0 auto;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:#08080a;display:grid;place-items:center}
+.rc-dot svg{width:11px;height:11px;fill:none;stroke:#08080a;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.rc-step.done .rc-dot{background:#e6c589;border-color:#e6c589}
+.rc-step.now .rc-dot{border-color:#e6c589;box-shadow:0 0 0 5px rgba(230,197,137,.14)}
+.rc-step.now .rc-dot:after{content:"";width:8px;height:8px;border-radius:50%;background:#e6c589;animation:rcPulse 2.2s ease-in-out infinite}
+@keyframes rcPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.6);opacity:.55}}
+.rc-step .n{display:block;margin-top:16px;font-family:'IBM Plex Mono';font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.42)}
+.rc-step .t{display:block;margin-top:6px;font-size:.84rem;line-height:1.35;color:rgba(255,255,255,.55)}
+.rc-step.done .t{color:#fff}
+.rc-step.now .t{color:#e6c589}
+.rc-step .s{display:block;margin-top:8px;font-family:'IBM Plex Mono';font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.rc-step.done .s{color:rgba(230,197,137,.75)}
+.rc-step.now .s{color:#e6c589}
+.rc-phases{display:grid;grid-template-columns:2fr 3fr 3fr;gap:0;margin-top:clamp(28px,4vw,44px);border-top:1px solid rgba(255,255,255,.08)}
+.rc-phase{padding:18px 8px 0;font-family:'IBM Plex Mono';font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);text-align:center}
+.rc-phase b{color:rgba(255,255,255,.75);font-weight:500}
+.rc-phase+.rc-phase{border-left:1px solid rgba(255,255,255,.08)}
+.rc-upd{margin-top:clamp(28px,4vw,40px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'IBM Plex Mono';font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.rc-upd b{color:rgba(255,255,255,.75);font-weight:500}
+@media (max-width:860px){.rc-prog-head{grid-template-columns:1fr}.rc-big{text-align:left}.rc-rail{grid-template-columns:1fr;gap:0}.rc-rail:before,.rc-rail .fill{display:none}.rc-step{display:grid;grid-template-columns:22px 1fr auto;gap:0 14px;text-align:left;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08);align-items:center}.rc-dot{margin:0}.rc-step .n{display:none}.rc-step .t{margin:0;font-size:.95rem}.rc-step .s{margin:0}.rc-phases{display:none}}
 </style>
 </head>
 <body class="r-robo" data-route="/roboclark">
@@ -102,13 +138,20 @@
     <span class="kicker">Hardware in Development &middot; Early 2027</span>
     <h1>The same sensor.<br>Now it <em>rolls.</em></h1>
     <p class="lede">Robo-CLARK walks the walk, and fills the potholes while you sleep.</p>
-    <form class="rc-form" id="rcForm" novalidate>
-      <input type="email" id="rcEmail" name="email" autocomplete="email" placeholder="Your launch email" aria-label="Your launch email" required>
-      <button class="btn btn-gold" id="rcGo" type="submit">Tell me when it rolls</button>
-      <input class="rc-hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-    </form>
-    <p class="rc-msg" id="rcMsg" role="status" aria-live="polite"></p>
+    <div class="rc-mini" id="rcMini"></div>
     <p class="fine">Designed in California. Built for the USA.</p>
+  </div>
+</section>
+
+<section class="rc-prog" id="progress" aria-label="Robo-CLARK development status">
+  <div class="wrap">
+    <div class="rc-prog-head">
+      <div><span class="kicker">Development status</span><h2>Where Robo-CLARK stands.</h2><p class="sub">Eight milestones from specification to the first public demonstration. This page is the record: it moves when the work moves.</p></div>
+      <div class="rc-big"><b id="rcPct"></b><span id="rcCount"></span></div>
+    </div>
+    <div class="rc-rail" id="rcRail"></div>
+    <div class="rc-phases"><div class="rc-phase"><b>Define</b> &middot; 01 to 02</div><div class="rc-phase"><b>Build</b> &middot; 03 to 05</div><div class="rc-phase"><b>Prove</b> &middot; 06 to 08</div></div>
+    <div class="rc-upd"><span>Updated <b id="rcUpd"></b></span><span>Target <b>First streets, early 2027</b></span><span>Marina del Rey, CA</span></div>
   </div>
 </section>
 
@@ -187,20 +230,29 @@
   </div>
 </div>
 <script>
+/* Robo-CLARK R&D status. Edit this list as work moves: status is done | now | next. Everything else updates itself. */
 (function(){
-  var f=document.getElementById('rcForm'), e=document.getElementById('rcEmail'), m=document.getElementById('rcMsg'), b=document.getElementById('rcGo');
-  if(!f) return;
-  f.addEventListener('submit', function(ev){
-    ev.preventDefault();
-    var v=(e.value||'').trim();
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){ m.textContent='Enter your email and we will write once, when it rolls.'; e.focus(); return; }
-    if(f.querySelector('.rc-hp').value) return;
-    b.disabled=true; m.textContent='One second.';
-    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({access_key:'4365678d-dc9b-4f12-9aca-61090053d963',subject:'Robo CLARK waitlist: '+v,from_name:'Robo CLARK waitlist',email:v,list:'Robo CLARK',page:location.href,botcheck:f.querySelector('.rc-hp').value})})
-      .then(function(r){ return r.json().then(function(j){ if(!r.ok||!j.success) throw new Error('bad'); return j; }); })
-      .then(function(){ f.hidden=true; m.textContent='You are on the list. One email, when it rolls.'; try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:'/roboclark/waitlist',event:true}); }catch(x){} })
-      .catch(function(){ b.disabled=false; m.textContent='Our form service hiccupped. Opening an email to support@teaforstreets.app instead.'; location.href='mailto:support@teaforstreets.app?subject='+encodeURIComponent('Robo CLARK waitlist: '+v)+'&body='+encodeURIComponent('Please add '+v+' to the Robo CLARK list.'); });
-  });
+  var STEPS=[
+    {t:'Robot specification',s:'done'},
+    {t:'Task scenarios validated',s:'done'},
+    {t:'Demonstration environment',s:'now'},
+    {t:'Task programming',s:'done'},
+    {t:'Product site',s:'done'},
+    {t:'Test and refine',s:'next'},
+    {t:'Demonstration film',s:'next'},
+    {t:'First public demonstration',s:'next'}
+  ];
+  var UPDATED='Oct 30, 2026';
+  var done=STEPS.filter(function(x){return x.s==='done'}).length, total=STEPS.length, pct=Math.round(done/total*100);
+  var now=STEPS.filter(function(x){return x.s==='now'})[0], next=STEPS.filter(function(x){return x.s==='next'})[0];
+  var label={done:'Complete',now:'In progress',next:'Up next'};
+  var check='<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  var mini=document.getElementById('rcMini');
+  if(mini) mini.innerHTML='<div class="rc-mini-top"><span>R&amp;D progress</span><b>'+done+' of '+total+' milestones</b></div><div class="rc-mini-bar"><i style="width:'+pct+'%"></i><em style="left:'+pct+'%"></em></div><div class="rc-mini-now">'+(now?'Now: '+now.t:'All milestones complete')+(next?'<small>Next: '+next.t+'</small>':'')+'</div><a class="btn btn-gold" href="#progress">See where we are</a>';
+  var lastDone=-1; STEPS.forEach(function(x,i){ if(x.s==='done') lastDone=i; });
+  var rail=document.getElementById('rcRail');
+  if(rail) rail.innerHTML='<div class="fill" style="width:calc((100% - 100%/'+total+') * '+(Math.max(lastDone,0)/(total-1))+')"></div>'+STEPS.map(function(x,i){ return '<div class="rc-step '+x.s+'"><div class="rc-dot">'+(x.s==='done'?check:'')+'</div><span class="n">'+(i<9?'0':'')+(i+1)+'</span><span class="t">'+x.t+'</span><span class="s">'+label[x.s]+'</span></div>'; }).join('');
+  var el; if(el=document.getElementById('rcPct')) el.textContent=pct+'%'; if(el=document.getElementById('rcCount')) el.textContent=done+' of '+total+' complete'; if(el=document.getElementById('rcUpd')) el.textContent=UPDATED;
 })();
 </script>
 <script src="/site.js" defer></script>
