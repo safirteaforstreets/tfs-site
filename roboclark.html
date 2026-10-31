@@ -59,7 +59,7 @@
 .rc-prog-head{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;margin-bottom:clamp(32px,4vw,56px)}
 .rc-big{text-align:right}
 .rc-big b{display:block;font-family:'Fraunces';font-weight:300;font-size:clamp(3.4rem,7vw,6rem);line-height:.9;letter-spacing:-.03em;color:#e6c589}
-.rc-big span{display:block;font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:10px}
+.rc-big>span{display:block;font-family:'IBM Plex Mono';font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:10px}
 .rc-rail{position:relative;display:grid;grid-template-columns:repeat(8,1fr);gap:0;margin-top:8px}
 .rc-rail:before{content:"";position:absolute;left:calc(100%/16);right:calc(100%/16);top:11px;height:1px;background:rgba(255,255,255,.14)}
 .rc-rail .fill{position:absolute;left:calc(100%/16);top:11px;height:1px;background:linear-gradient(90deg,#b8923f,#e6c589)}
@@ -84,6 +84,7 @@
 .rc-upd{margin-top:clamp(28px,4vw,40px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'IBM Plex Mono';font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45)}
 .rc-upd b{color:rgba(255,255,255,.75);font-weight:500}
 @media (max-width:860px){.rc-prog-head{grid-template-columns:1fr}.rc-big{text-align:left}.rc-rail{grid-template-columns:1fr;gap:0}.rc-rail:before,.rc-rail .fill{display:none}.rc-step{display:grid;grid-template-columns:22px 1fr auto;gap:0 14px;text-align:left;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08);align-items:center}.rc-dot{margin:0}.rc-step .n{display:none}.rc-step .t{margin:0;font-size:.95rem}.rc-step .s{margin:0}.rc-phases{display:none}}
+.rc-n{font-style:normal}
 .rc-mini-bar i{width:0;transition:width 1.4s cubic-bezier(.22,1,.36,1)}
 .rc-mini-bar em{left:0;transition:left 1.4s cubic-bezier(.22,1,.36,1)}
 .rc-mini-bar s{position:absolute;top:-1px;bottom:-1px;left:-30%;width:30%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.45),rgba(255,255,255,0));animation:rcSheen 3.2s ease-in-out 1.6s infinite;mix-blend-mode:screen;pointer-events:none}
@@ -261,7 +262,7 @@
   var lastDone=-1; STEPS.forEach(function(x,i){ if(x.s==='done') lastDone=i; });
   var rail=document.getElementById('rcRail');
   if(rail) rail.innerHTML='<div class="fill" data-w="calc((100% - 100%/'+total+') * '+(Math.max(lastDone,0)/(total-1))+')"></div>'+STEPS.map(function(x,i){ return '<div class="rc-step '+x.s+'"><div class="rc-dot">'+(x.s==='done'?check:'')+'</div><span class="n">'+(i<9?'0':'')+(i+1)+'</span><span class="t">'+x.t+'</span><span class="s">'+label[x.s]+'</span></div>'; }).join('');
-  var el; if(el=document.getElementById('rcPct')) el.innerHTML='<span class="rc-n" data-to="'+pct+'">0</span>%'; if(el=document.getElementById('rcCount')) el.textContent=done+' of '+total+' complete';
+  var el; if(el=document.getElementById('rcPct')) el.innerHTML='<i class="rc-n" data-to="'+pct+'">0</i>%'; if(el=document.getElementById('rcCount')) el.textContent=done+' of '+total+' complete';
   /* motion: count up, fill the bars, light the milestones in order */
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function ease(t){return 1-Math.pow(1-t,3)}
