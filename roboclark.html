@@ -84,6 +84,16 @@
 .rc-upd{margin-top:clamp(28px,4vw,40px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'IBM Plex Mono';font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45)}
 .rc-upd b{color:rgba(255,255,255,.75);font-weight:500}
 @media (max-width:860px){.rc-prog-head{grid-template-columns:1fr}.rc-big{text-align:left}.rc-rail{grid-template-columns:1fr;gap:0}.rc-rail:before,.rc-rail .fill{display:none}.rc-step{display:grid;grid-template-columns:22px 1fr auto;gap:0 14px;text-align:left;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08);align-items:center}.rc-dot{margin:0}.rc-step .n{display:none}.rc-step .t{margin:0;font-size:.95rem}.rc-step .s{margin:0}.rc-phases{display:none}}
+.rc-mini-bar i{width:0;transition:width 1.4s cubic-bezier(.22,1,.36,1)}
+.rc-mini-bar em{left:0;transition:left 1.4s cubic-bezier(.22,1,.36,1)}
+.rc-mini-bar s{position:absolute;top:-1px;bottom:-1px;left:-30%;width:30%;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.45),rgba(255,255,255,0));animation:rcSheen 3.2s ease-in-out 1.6s infinite;mix-blend-mode:screen;pointer-events:none}
+@keyframes rcSheen{0%{left:-30%;opacity:0}10%{opacity:1}45%{left:100%;opacity:0}100%{left:100%;opacity:0}}
+.rc-rail .fill{width:0;transition:width 1.6s cubic-bezier(.22,1,.36,1) .2s}
+.rc-step .rc-dot,.rc-step .t,.rc-step .s,.rc-step .n{opacity:0;transform:translateY(6px);transition:opacity .5s ease,transform .5s ease,background .3s,border-color .3s}
+.rc-step.lit .rc-dot,.rc-step.lit .t,.rc-step.lit .s,.rc-step.lit .n{opacity:1;transform:none}
+.rc-step.done .rc-dot{transform:scale(.6)}
+.rc-step.done.lit .rc-dot{transform:scale(1);transition:opacity .5s ease,transform .55s cubic-bezier(.34,1.56,.64,1)}
+@media (prefers-reduced-motion:reduce){.rc-mini-bar i,.rc-mini-bar em,.rc-rail .fill,.rc-step *{transition:none!important}.rc-mini-bar s,.rc-step.now .rc-dot:after{animation:none!important}}
 </style>
 </head>
 <body class="r-robo" data-route="/roboclark">
@@ -146,12 +156,11 @@
 <section class="rc-prog" id="progress" aria-label="Robo-CLARK development status">
   <div class="wrap">
     <div class="rc-prog-head">
-      <div><span class="kicker">Development status</span><h2>Where Robo-CLARK stands.</h2><p class="sub">Eight milestones from specification to the first public demonstration. This page is the record: it moves when the work moves.</p></div>
+      <div><span class="kicker">Live Development Status</span><h2>See it build. In real time.</h2><p class="sub">From initial specification to the first public demonstration, follow Robo-CLARK across eight critical milestones. When the work moves, this page moves.</p></div>
       <div class="rc-big"><b id="rcPct"></b><span id="rcCount"></span></div>
     </div>
     <div class="rc-rail" id="rcRail"></div>
     <div class="rc-phases"><div class="rc-phase"><b>Define</b> &middot; 01 to 02</div><div class="rc-phase"><b>Build</b> &middot; 03 to 05</div><div class="rc-phase"><b>Prove</b> &middot; 06 to 08</div></div>
-    <div class="rc-upd"><span>Updated <b id="rcUpd"></b></span><span>Target <b>First streets, early 2027</b></span><span>Marina del Rey, CA</span></div>
   </div>
 </section>
 
@@ -242,17 +251,33 @@
     {t:'Demonstration film',s:'next'},
     {t:'First public demonstration',s:'next'}
   ];
-  var UPDATED='Oct 30, 2026';
-  var done=STEPS.filter(function(x){return x.s==='done'}).length, total=STEPS.length, pct=Math.round(done/total*100);
+  var PCT=65; /* overall progress shown, includes partial credit for the milestone in progress */
+  var done=STEPS.filter(function(x){return x.s==='done'}).length, total=STEPS.length, pct=PCT;
   var now=STEPS.filter(function(x){return x.s==='now'})[0], next=STEPS.filter(function(x){return x.s==='next'})[0];
   var label={done:'Complete',now:'In progress',next:'Up next'};
   var check='<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
   var mini=document.getElementById('rcMini');
-  if(mini) mini.innerHTML='<div class="rc-mini-top"><span>R&amp;D progress</span><b>'+done+' of '+total+' milestones</b></div><div class="rc-mini-bar"><i style="width:'+pct+'%"></i><em style="left:'+pct+'%"></em></div><div class="rc-mini-now">'+(now?'Now: '+now.t:'All milestones complete')+(next?'<small>Next: '+next.t+'</small>':'')+'</div><a class="btn btn-gold" href="#progress">See where we are</a>';
+  if(mini) mini.innerHTML='<div class="rc-mini-top"><span>R&amp;D progress</span><b><span class="rc-n" data-to="'+pct+'">0</span>% &middot; '+done+' of '+total+' milestones</b></div><div class="rc-mini-bar"><i class="rc-anim" data-w="'+pct+'"></i><em class="rc-anim-l" data-w="'+pct+'"></em><s></s></div><div class="rc-mini-now">'+(now?'Now: '+now.t:'All milestones complete')+(next?'<small>Next: '+next.t+'</small>':'')+'</div><a class="btn btn-gold" href="#progress">See where we are</a>';
   var lastDone=-1; STEPS.forEach(function(x,i){ if(x.s==='done') lastDone=i; });
   var rail=document.getElementById('rcRail');
-  if(rail) rail.innerHTML='<div class="fill" style="width:calc((100% - 100%/'+total+') * '+(Math.max(lastDone,0)/(total-1))+')"></div>'+STEPS.map(function(x,i){ return '<div class="rc-step '+x.s+'"><div class="rc-dot">'+(x.s==='done'?check:'')+'</div><span class="n">'+(i<9?'0':'')+(i+1)+'</span><span class="t">'+x.t+'</span><span class="s">'+label[x.s]+'</span></div>'; }).join('');
-  var el; if(el=document.getElementById('rcPct')) el.textContent=pct+'%'; if(el=document.getElementById('rcCount')) el.textContent=done+' of '+total+' complete'; if(el=document.getElementById('rcUpd')) el.textContent=UPDATED;
+  if(rail) rail.innerHTML='<div class="fill" data-w="calc((100% - 100%/'+total+') * '+(Math.max(lastDone,0)/(total-1))+')"></div>'+STEPS.map(function(x,i){ return '<div class="rc-step '+x.s+'"><div class="rc-dot">'+(x.s==='done'?check:'')+'</div><span class="n">'+(i<9?'0':'')+(i+1)+'</span><span class="t">'+x.t+'</span><span class="s">'+label[x.s]+'</span></div>'; }).join('');
+  var el; if(el=document.getElementById('rcPct')) el.innerHTML='<span class="rc-n" data-to="'+pct+'">0</span>%'; if(el=document.getElementById('rcCount')) el.textContent=done+' of '+total+' complete';
+  /* motion: count up, fill the bars, light the milestones in order */
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ease(t){return 1-Math.pow(1-t,3)}
+  function count(n){ var to=+n.getAttribute('data-to'), t0=null; if(reduce){n.textContent=to;return;} function f(ts){ if(!t0)t0=ts; var k=Math.min(1,(ts-t0)/1400); n.textContent=Math.round(ease(k)*to); if(k<1)requestAnimationFrame(f);} requestAnimationFrame(f); }
+  function play(root){
+    if(root.getAttribute('data-played')) return; root.setAttribute('data-played','1');
+    root.querySelectorAll('.rc-n').forEach(count);
+    root.querySelectorAll('.rc-anim').forEach(function(b){ b.style.width=b.getAttribute('data-w')+'%'; });
+    root.querySelectorAll('.rc-anim-l').forEach(function(b){ b.style.left=b.getAttribute('data-w')+'%'; });
+    root.querySelectorAll('.fill').forEach(function(b){ b.style.width=b.getAttribute('data-w'); });
+    root.querySelectorAll('.rc-step').forEach(function(st,i){ setTimeout(function(){ st.classList.add('lit'); }, reduce?0:140*i+200); });
+  }
+  if(reduce){ play(document.body); return; }
+  var targets=[mini, document.getElementById('progress')].filter(Boolean);
+  if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ play(e.target); io.unobserve(e.target); } }); },{threshold:.35}); targets.forEach(function(t){ io.observe(t); }); }
+  else targets.forEach(play);
 })();
 </script>
 <script src="/site.js" defer></script>
