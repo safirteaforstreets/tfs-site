@@ -133,6 +133,7 @@
 <canvas id="heroCanvas" hidden aria-hidden="true"></canvas>
 
 <section class="hero2" aria-label="Introduction">
+  <div class="hs-track">
   <div class="wrap">
     <div>
       <h1>Say it once.<br>CLARK does <em>the rest.</em></h1>
@@ -151,6 +152,62 @@
       </div>
     </div>
   </div>
+    <div class="wrap hs-w2 off" aria-label="Robo-CLARK">
+      <div class="hs-robo">
+        <div>
+          <span class="rk">Hardware in development &middot; Early 2027</span>
+          <h1>Software files it.<br>Hardware <em>fixes it.</em></h1>
+          <p class="lede">Robo-CLARK fills the potholes the app has already measured, supervised, midnight to sunrise.</p>
+          <div class="actions"><a class="btn btn-gold" href="/roboclark">Meet Robo-CLARK</a><a class="more" href="/roboclark#progress">See the build, 65% <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
+        </div>
+        <div class="hs-fig"><img src="/img/robo-clark.jpg" alt="Robo-CLARK on wet asphalt, rim-lit in gold" loading="lazy" decoding="async"><div class="hs-meter"><div class="t"><span>R&amp;D progress</span><b>65% &middot; 4 of 8 milestones</b></div><div class="bar"><i></i></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="hs-dots" role="tablist" aria-label="Hero slides"><button class="on" type="button" role="tab" aria-label="CLARK app"><i></i></button><button type="button" role="tab" aria-label="Robo-CLARK"><i></i></button></div>
+<style>
+.hero2{position:relative;overflow:hidden}
+.hero2 .hs-track{display:flex;width:200%;transition:transform 1.1s cubic-bezier(.76,0,.24,1);will-change:transform}
+.hero2 .hs-track>.wrap{flex:0 0 50%;max-width:none;box-sizing:border-box;padding-left:max(24px,calc(25% - 570px));padding-right:max(24px,calc(25% - 570px))}
+.hero2 .hs-track>.wrap.hs-w2{display:block}
+.hero2 .hs-track>.wrap>*{transition:opacity .9s ease .25s,transform .9s ease .25s}
+.hero2 .hs-track>.wrap.off>*{opacity:0;transform:translateY(14px)}
+.hero2 .hs-robo{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:clamp(24px,4vw,64px);min-height:inherit}
+.hero2 .hs-robo .rk{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:#e6c589;display:block;margin-bottom:14px}
+.hero2 .hs-robo .hs-fig{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5;height:min(620px,72vh);width:auto;justify-self:center;box-shadow:0 40px 90px rgba(0,0,0,.6);background:#08080a}
+.hero2 .hs-robo .hs-fig img{width:100%;height:100%;object-fit:cover;object-position:38% 50%;display:block}
+.hero2 .hs-robo .hs-fig:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,10,0) 55%,rgba(8,8,10,.55) 100%);pointer-events:none}
+.hero2 .hs-robo .hs-meter{position:absolute;left:22px;right:22px;bottom:20px;color:#fff;z-index:1}
+.hero2 .hs-robo .hs-meter .t{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.hero2 .hs-robo .hs-meter .t b{color:#e6c589;font-weight:500}
+.hero2 .hs-robo .hs-meter .bar{height:3px;background:rgba(255,255,255,.18);border-radius:3px;margin-top:10px;position:relative}
+.hero2 .hs-robo .hs-meter .bar i{position:absolute;left:0;top:0;bottom:0;width:65%;border-radius:3px;background:linear-gradient(90deg,#b8923f,#e6c589)}
+.hero2 .hs-dots{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;gap:10px;z-index:5}
+.hero2 .hs-dots button{width:34px;height:4px;border-radius:2px;border:0;padding:0;background:rgba(255,255,255,.22);cursor:pointer;position:relative;overflow:hidden}
+.hero2 .hs-dots button i{position:absolute;inset:0;width:0;background:#e6c589}
+.hero2 .hs-dots button.on i{animation:hsFill 7s linear forwards}
+.hero2.hs-paused .hs-dots button.on i{animation-play-state:paused}
+@keyframes hsFill{to{width:100%}}
+@media(max-width:860px){.hero2 .hs-robo{grid-template-columns:1fr}.hero2 .hs-robo .hs-fig{height:auto;width:100%;max-height:440px}}
+@media(prefers-reduced-motion:reduce){.hero2 .hs-track{transition:none}.hero2 .hs-track>.wrap>*{transition:none}.hero2 .hs-dots button.on i{animation:none;width:100%}}
+</style>
+<script>
+(function(){
+  var hero=document.querySelector('.hero2'), track=hero&&hero.querySelector('.hs-track'); if(!track) return;
+  var slides=[].slice.call(track.children), dots=[].slice.call(hero.querySelectorAll('.hs-dots button')), i=0, timer=null, DUR=7000;
+  function go(n){ i=(n+slides.length)%slides.length; track.style.transform='translateX(-'+(100/slides.length*i)+'%)';
+    slides.forEach(function(s,k){ s.classList.toggle('off',k!==i); });
+    dots.forEach(function(d,k){ d.classList.toggle('on',k===i); d.setAttribute('aria-selected',k===i); var f=d.querySelector('i'); f.style.animation='none'; void f.offsetWidth; f.style.animation=''; }); }
+  function arm(){ clearInterval(timer); timer=setInterval(function(){ go(i+1); }, DUR); }
+  dots.forEach(function(d,k){ d.addEventListener('click',function(){ go(k); arm(); }); });
+  hero.addEventListener('mouseenter',function(){ clearInterval(timer); hero.classList.add('hs-paused'); });
+  hero.addEventListener('mouseleave',function(){ hero.classList.remove('hs-paused'); arm(); });
+  var x0=null; hero.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+  hero.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; x0=null; if(Math.abs(dx)>40){ go(dx<0?i+1:i-1); arm(); } },{passive:true});
+  document.addEventListener('visibilitychange',function(){ if(document.hidden) clearInterval(timer); else arm(); });
+  if(!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)) arm();
+})();
+</script>
 </section>
 
 <section class="bw dark" aria-label="Programs Tea For Streets is part of">
