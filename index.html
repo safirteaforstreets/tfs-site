@@ -205,18 +205,25 @@
   var film=document.getElementById('openFilm'), ROBO_DUR=9000, FALLBACK=30000;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function fill(k,ms){ var f=dots[k].querySelector('i'); f.style.animation='none'; void f.offsetWidth; f.style.animation=''; f.style.animationDuration=(ms/1000)+'s'; }
-  function go(n){ i=(n+slides.length)%slides.length; track.style.transform='translateX(-'+(100/slides.length*i)+'%)';
+  function filmMs(){ return (film&&isFinite(film.duration)&&film.duration>1)?film.duration*1000:FALLBACK; }
+  function startFilm(){ if(!film) return; try{ film.loop=false; film.currentTime=0; var p=film.play(); if(p&&p.catch) p.catch(function(){}); }catch(e){} }
+  function go(n){
+    i=(n+slides.length)%slides.length;
+    track.style.transform='translateX(-'+(100/slides.length*i)+'%)';
     slides.forEach(function(s,k){ s.classList.toggle('off',k!==i); });
     dots.forEach(function(d,k){ d.classList.toggle('on',k===i); d.setAttribute('aria-selected',k===i); });
     clearTimeout(timer);
-    if(i===0){ if(film){ try{ film.currentTime=0; film.loop=false; var p=film.play(); if(p&&p.catch) p.catch(function(){}); }catch(e){} var d=(film&&isFinite(film.duration)&&film.duration>1)?film.duration*1000:FALLBACK; fill(0,d); timer=setTimeout(function(){ if(i===0) go(1); }, d+400); }
+    if(i===0){ startFilm(); var d=filmMs(); fill(0,d); timer=setTimeout(function(){ if(i===0) go(1); }, d+600); }
     else { fill(1,ROBO_DUR); timer=setTimeout(function(){ go(0); }, ROBO_DUR); }
   }
-  if(film){ film.loop=false; film.addEventListener('ended',function(){ if(i===0&&!hero.classList.contains('hs-paused')) go(1); else if(i===0){ film.currentTime=0; film.play(); } });
-    film.addEventListener('loadedmetadata',function(){ if(i===0) fill(0,film.duration*1000); }); }
+  if(film){
+    film.loop=false;
+    film.addEventListener('ended',function(){ if(i!==0) return; if(hero.classList.contains('hs-paused')){ startFilm(); } else { go(1); } });
+    film.addEventListener('loadedmetadata',function(){ if(i===0){ fill(0,filmMs()); clearTimeout(timer); timer=setTimeout(function(){ if(i===0) go(1); }, filmMs()+600); } });
+  }
   dots.forEach(function(d,k){ d.addEventListener('click',function(){ go(k); }); });
-  hero.addEventListener('mouseenter',function(){ hero.classList.add('hs-paused'); clearTimeout(timer); });
-  hero.addEventListener('mouseleave',function(){ hero.classList.remove('hs-paused'); if(i===1) timer=setTimeout(function(){ go(0); }, ROBO_DUR); else if(film&&film.ended) go(1); });
+  hero.addEventListener('mouseenter',function(){ hero.classList.add('hs-paused'); if(i===1) clearTimeout(timer); });
+  hero.addEventListener('mouseleave',function(){ hero.classList.remove('hs-paused'); if(i===1){ clearTimeout(timer); timer=setTimeout(function(){ go(0); }, ROBO_DUR); } });
   var x0=null; hero.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
   hero.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; x0=null; if(Math.abs(dx)>40){ go(dx<0?i+1:i-1); } },{passive:true});
   document.addEventListener('visibilitychange',function(){ if(document.hidden){ clearTimeout(timer); } else { go(i); } });
