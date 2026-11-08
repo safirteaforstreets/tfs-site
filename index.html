@@ -185,7 +185,7 @@
 .hero2 .hs-dots{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;gap:10px;z-index:5}
 .hero2 .hs-dots button{width:34px;height:4px;border-radius:2px;border:0;padding:0;background:rgba(255,255,255,.22);cursor:pointer;position:relative;overflow:hidden}
 .hero2 .hs-dots button i{position:absolute;inset:0;width:0;background:#e6c589}
-.hero2 .hs-dots button.on i{animation:hsFill 7s linear forwards}
+.hero2 .hs-dots button.on i{animation:hsFill 7s linear forwards;animation-fill-mode:forwards}
 .hero2.hs-paused .hs-dots button.on i{animation-play-state:paused}
 @keyframes hsFill{to{width:100%}}
 .hero2 .hs-fig img{transform:scale(1.08) translateX(2%);transition:transform 9s cubic-bezier(.16,1,.3,1);transform-origin:45% 55%}
@@ -201,18 +201,27 @@
 <script>
 (function(){
   var hero=document.querySelector('.hero2'), track=hero&&hero.querySelector('.hs-track'); if(!track) return;
-  var slides=[].slice.call(track.children), dots=[].slice.call(hero.querySelectorAll('.hs-dots button')), i=0, timer=null, DUR=7000;
+  var slides=[].slice.call(track.children), dots=[].slice.call(hero.querySelectorAll('.hs-dots button')), i=0, timer=null;
+  var film=document.getElementById('openFilm'), ROBO_DUR=9000, FALLBACK=30000;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function fill(k,ms){ var f=dots[k].querySelector('i'); f.style.animation='none'; void f.offsetWidth; f.style.animation=''; f.style.animationDuration=(ms/1000)+'s'; }
   function go(n){ i=(n+slides.length)%slides.length; track.style.transform='translateX(-'+(100/slides.length*i)+'%)';
     slides.forEach(function(s,k){ s.classList.toggle('off',k!==i); });
-    dots.forEach(function(d,k){ d.classList.toggle('on',k===i); d.setAttribute('aria-selected',k===i); var f=d.querySelector('i'); f.style.animation='none'; void f.offsetWidth; f.style.animation=''; }); }
-  function arm(){ clearInterval(timer); timer=setInterval(function(){ go(i+1); }, DUR); }
-  dots.forEach(function(d,k){ d.addEventListener('click',function(){ go(k); arm(); }); });
-  hero.addEventListener('mouseenter',function(){ clearInterval(timer); hero.classList.add('hs-paused'); });
-  hero.addEventListener('mouseleave',function(){ hero.classList.remove('hs-paused'); arm(); });
+    dots.forEach(function(d,k){ d.classList.toggle('on',k===i); d.setAttribute('aria-selected',k===i); });
+    clearTimeout(timer);
+    if(i===0){ if(film){ try{ film.currentTime=0; film.loop=false; var p=film.play(); if(p&&p.catch) p.catch(function(){}); }catch(e){} var d=(film&&isFinite(film.duration)&&film.duration>1)?film.duration*1000:FALLBACK; fill(0,d); timer=setTimeout(function(){ if(i===0) go(1); }, d+400); }
+    else { fill(1,ROBO_DUR); timer=setTimeout(function(){ go(0); }, ROBO_DUR); }
+  }
+  if(film){ film.loop=false; film.addEventListener('ended',function(){ if(i===0&&!hero.classList.contains('hs-paused')) go(1); else if(i===0){ film.currentTime=0; film.play(); } });
+    film.addEventListener('loadedmetadata',function(){ if(i===0) fill(0,film.duration*1000); }); }
+  dots.forEach(function(d,k){ d.addEventListener('click',function(){ go(k); }); });
+  hero.addEventListener('mouseenter',function(){ hero.classList.add('hs-paused'); clearTimeout(timer); });
+  hero.addEventListener('mouseleave',function(){ hero.classList.remove('hs-paused'); if(i===1) timer=setTimeout(function(){ go(0); }, ROBO_DUR); else if(film&&film.ended) go(1); });
   var x0=null; hero.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
-  hero.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; x0=null; if(Math.abs(dx)>40){ go(dx<0?i+1:i-1); arm(); } },{passive:true});
-  document.addEventListener('visibilitychange',function(){ if(document.hidden) clearInterval(timer); else arm(); });
-  if(!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)) arm();
+  hero.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; x0=null; if(Math.abs(dx)>40){ go(dx<0?i+1:i-1); } },{passive:true});
+  document.addEventListener('visibilitychange',function(){ if(document.hidden){ clearTimeout(timer); } else { go(i); } });
+  if(reduce){ if(film) film.loop=true; return; }
+  go(0);
 })();
 </script>
 </section>
